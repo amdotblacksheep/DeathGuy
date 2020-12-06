@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://assets/shader/texture/right_texture.png" type="Texture" id=1]
+[ext_resource path="res://assets/shader/script/change_texture.shader" type="Shader" id=2]
+
+[resource]
+shader = ExtResource( 2 )
+shader_param/value = 1.0
+shader_param/erease_texture = ExtResource( 1 )

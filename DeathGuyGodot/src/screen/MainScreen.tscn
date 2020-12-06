@@ -1,0 +1,322 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/player/head/head01.png" type="Texture" id=1]
+[ext_resource path="res://assets/shader/material/erease.tres" type="Material" id=2]
+[ext_resource path="res://assets/fonts/deathguy_font.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/player/body/body01.png" type="Texture" id=5]
+[ext_resource path="res://src/screen/main_screen.gd" type="Script" id=6]
+[ext_resource path="res://assets/social/itchio_logo.png" type="Texture" id=7]
+[ext_resource path="res://assets/social/twitter_logo.png" type="Texture" id=8]
+[ext_resource path="res://assets/sfx/click_r1.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/ui/button/sound_button_normal.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/button/sound_button_pressed.png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = -12
+extra_spacing_char = 2
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "sprite_unique"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 192, 64, 64 ), Rect2( 64, 192, 64, 64 ), Rect2( 128, 192, 64, 64 ), Rect2( 192, 192, 64, 64 ), Rect2( 192, 192, 64, 64 ), Rect2( 128, 192, 64, 64 ), Rect2( 64, 192, 64, 64 ), Rect2( 0, 192, 64, 64 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Head:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 192, 64, 64 ), Rect2( 64, 192, 64, 64 ), Rect2( 128, 192, 64, 64 ), Rect2( 192, 192, 64, 64 ), Rect2( 192, 192, 64, 64 ), Rect2( 128, 192, 64, 64 ), Rect2( 64, 192, 64, 64 ), Rect2( 0, 192, 64, 64 ) ]
+}
+
+[node name="MainScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -192.0
+margin_top = 128.0
+margin_right = 190.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.776471, 0.776471, 0.776471, 1 )
+text = "Death Guy"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Control" parent="."]
+material = ExtResource( 2 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -180.0
+margin_right = 128.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 256, 256 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="Sprite" parent="Sprite"]
+use_parent_material = true
+position = Vector2( 128, 128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 192, 64, 64 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Head" type="Sprite" parent="Sprite"]
+use_parent_material = true
+position = Vector2( 128, 128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 192, 64, 64 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="EasterEgg" type="Button" parent="Sprite"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = 80.0
+margin_right = 200.0
+margin_bottom = 328.0
+rect_min_size = Vector2( 400, 248 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+use_parent_material = true
+margin_right = 400.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 400, 80 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "Play!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CustomizeButton" type="Button" parent="VBoxContainer"]
+use_parent_material = true
+margin_top = 84.0
+margin_right = 400.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 400, 80 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "Customize!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+use_parent_material = true
+margin_top = 168.0
+margin_right = 400.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 400, 80 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "Exit!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = -112.0
+margin_right = -32.0
+margin_bottom = -32.0
+rect_min_size = Vector2( 0, 80 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItchButton" type="TextureButton" parent="HBoxContainer"]
+modulate = Color( 0.776471, 0.776471, 0.776471, 1 )
+use_parent_material = true
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 84.0
+margin_right = 164.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 0 )
+
+[node name="TwitterButton" type="TextureButton" parent="HBoxContainer"]
+modulate = Color( 0.776471, 0.776471, 0.776471, 1 )
+use_parent_material = true
+margin_left = 168.0
+margin_right = 248.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 8 )
+expand = true
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 252.0
+margin_right = 572.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 320, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeButton" type="TextureButton" parent="HBoxContainer"]
+margin_left = 576.0
+margin_right = 656.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -16.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "ENTER"
+anims/ENTER = SubResource( 3 )
+anims/sprite_unique = SubResource( 4 )
+[connection signal="pressed" from="Sprite/EasterEgg" to="." method="_on_EasterEgg_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CustomizeButton" to="." method="_on_CustomizeButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/ItchButton" to="." method="_on_ItchButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/TwitterButton" to="." method="_on_TwitterButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VolumeButton" to="." method="_on_VolumeButton_pressed"]

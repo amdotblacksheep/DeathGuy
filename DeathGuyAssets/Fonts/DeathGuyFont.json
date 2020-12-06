@@ -1,0 +1,42 @@
+{
+	"$baseURI": "https://yal.cc/r/20/pixelfont/",
+	"$version": "1.0",
+	"in-glyphs": [
+		" !\"#$%&'()*+,-./",
+		"0123456789:;<=>?",
+		"@ABCDEFGHIJKLMNO",
+		"PQRSTUVWXYZ[\\]^_",
+		"`abcdefghijklmno",
+		"pqrstuvwxyz{|}~∎"
+	],
+	"glyph-color": "auto",
+	"glyph-width": 30,
+	"glyph-height": 30,
+	"glyph-ofs-x": 1,
+	"glyph-ofs-y": 1,
+	"glyph-sep-x": 1,
+	"glyph-sep-y": 1,
+	"glyph-base-x": 0,
+	"glyph-baseline": 26,
+	"glyph-spacing": 1,
+	"font-is-mono": false,
+	"font-em-square": 1024,
+	"font-line-gap": 0,
+	"font-px-size": 32,
+	"font-ascend": 768,
+	"font-descend": -256,
+	"font-name": "DeathGuyFont",
+	"font-author": "am.blacksheep",
+	"font-copy": "CC0 1.0 Universal (CC0 1.0)",
+	"font-version": "Version 0.1",
+	"font-desc": "Death Guy Font",
+	"font-license": "CC0 1.0 Universal (CC0 1.0)",
+	"font-license-url": "",
+	"font-sample-text": "Hello!",
+	"font-preview-text": [
+		"DEATH GUY",
+		"THE QUICK BROWN FOX JUMPS OVER A LAZY DOG.",
+		"the quick brown fox jumps over a lazy dog.",
+		"0123456789"
+	]
+}

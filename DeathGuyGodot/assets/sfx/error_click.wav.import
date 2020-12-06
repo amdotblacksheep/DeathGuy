@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/error_click.wav-aa8f4ae79ac37550fcc7e1b5f821fea5.sample"
+
+[deps]
+
+source_file="res://assets/sfx/error_click.wav"
+dest_files=[ "res://.import/error_click.wav-aa8f4ae79ac37550fcc7e1b5f821fea5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/screen/color_selector.gd" type="Script" id=1]
+[ext_resource path="res://src/screen/ColorSwitch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/screen/color_grid.gd" type="Script" id=3]
+[ext_resource path="res://assets/sfx/click_r1.wav" type="AudioStream" id=4]
+
+[node name="ColorSelector" type="Control"]
+margin_right = 228.0
+margin_bottom = 112.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorGrid" type="GridContainer" parent="."]
+margin_right = 228.0
+margin_bottom = 112.0
+columns = 4
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorSwitch" parent="ColorGrid" instance=ExtResource( 2 )]
+margin_right = 54.0
+margin_bottom = 54.0
+color = Color( 0.886275, 0.886275, 0.886275, 1 )
+locked = true
+
+[node name="ColorSwitch2" parent="ColorGrid" instance=ExtResource( 2 )]
+margin_left = 58.0
+margin_right = 112.0
+margin_bottom = 54.0
+color = Color( 0.827451, 0.168627, 0.231373, 1 )
+locked = true
+
+[node name="ColorSwitch3" parent="ColorGrid" instance=ExtResource( 2 )]
+margin_left = 116.0
+margin_right = 170.0
+margin_bottom = 54.0
+color = Color( 0.207843, 0.278431, 0.52549, 1 )
+locked = true
+
+[node name="ColorSwitch4" parent="ColorGrid" instance=ExtResource( 2 )]
+margin_left = 174.0
+margin_right = 228.0
+margin_bottom = 54.0
+color = Color( 0.113725, 0.494118, 0.27451, 1 )
+locked = true
+
+[node name="ColorSwitch5" parent="ColorGrid" instance=ExtResource( 2 )]
+margin_top = 58.0
+margin_right = 54.0
+margin_bottom = 112.0
+color = Color( 0.223529, 0.662745, 0.815686, 1 )
+locked = true
+
+[node name="ColorSwitch6" parent="ColorGrid" instance=ExtResource( 2 )]
+margin_left = 58.0
+margin_top = 58.0
+margin_right = 112.0
+margin_bottom = 112.0
+color = Color( 0.505882, 0.211765, 0.372549, 1 )
+locked = true
+
+[node name="ColorSwitch7" parent="ColorGrid" instance=ExtResource( 2 )]
+margin_left = 116.0
+margin_top = 58.0
+margin_right = 170.0
+margin_bottom = 112.0
+color = Color( 0.870588, 0.74902, 0.184314, 1 )
+locked = true
+
+[node name="ColorSwitch8" parent="ColorGrid" instance=ExtResource( 2 )]
+margin_left = 174.0
+margin_top = 58.0
+margin_right = 228.0
+margin_bottom = 112.0
+color = Color( 0.85098, 0.4, 0.219608, 1 )
+locked = true
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -16.0
