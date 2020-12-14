@@ -28,9 +28,9 @@ never be collected by amdotblacksheep.
 The app does use third-party services that may collect information used to identify you.
 
 Link to privacy policy of third-party service providers used by the app:
-  * [Google Play Services]("https://www.google.com/policies/privacy/")
-  * [AdMob]("https://support.google.com/admob/answer/6128543?hl=en")
-  * [Godot]("https://godotengine.org/privacy-policy")
+  * [Google Play Services](https://www.google.com/policies/privacy/)
+  * [AdMob](https://support.google.com/admob/answer/6128543?hl=en)
+  * [Godot](https://godotengine.org/privacy-policy)
 
 ## Log Data
 

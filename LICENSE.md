@@ -1,8 +1,8 @@
 # License
 
-[![Image]("https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg")]("https://en.wikipedia.org/wiki/MIT_License")
+[![Image](https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg)](https://opensource.org/licenses/MIT)
 
-Copyright (c) 2020 [amdotblacksheep]("https://amdotblacksheep.itch.io/")
+Copyright (c) 2020 [amdotblacksheep](https://amdotblacksheep.itch.io/)
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -25,4 +25,4 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-[DeathGuy]("https://amdotblacksheep.itch.io/deathguy")
+[DeathGuy](https://amdotblacksheep.itch.io/deathguy)

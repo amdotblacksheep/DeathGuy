@@ -22,9 +22,9 @@ or at all.
 The app does use third-party services that declare their own Terms and Conditions.
 
 Link to Terms and Conditions of third party service providers used by the app:
-  * [Google Play Services]("https://www.google.com/policies/privacy/")
-  * [AdMob]("https://support.google.com/admob/answer/6128543?hl=en")
-  * [Godot]("https://godotengine.org/privacy-policy")
+  * [Google Play Services](https://www.google.com/policies/privacy/)
+  * [AdMob](https://support.google.com/admob/answer/6128543?hl=en)
+  * [Godot](https://godotengine.org/privacy-policy)
 
 You should be aware that there are some things that amdotblacksheep will not take
 responsibility for. Some functions of the app require an active internet connection. The
