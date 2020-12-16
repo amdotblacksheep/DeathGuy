@@ -14,7 +14,6 @@
 [ext_resource path="res://assets/ui/button/pause_button_normal.png" type="Texture" id=12]
 [ext_resource path="res://assets/sfx/click_r1.wav" type="AudioStream" id=13]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 60
 font_data = ExtResource( 3 )

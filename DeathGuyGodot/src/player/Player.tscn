@@ -176,6 +176,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "respawn"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:material:shader_param/value")
 tracks/0/interp = 1
@@ -183,10 +184,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ 0.0, 0.7, 0.4, 0.8, 0.5, 1.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AudioStreamPlayer:stream")
@@ -274,6 +275,7 @@ script = ExtResource( 7 )
 script = ExtResource( 6 )
 
 [node name="Invincibility" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
