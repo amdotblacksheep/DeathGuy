@@ -1,6 +1,10 @@
 # License
 
-[![Image](https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg)](https://opensource.org/licenses/MIT)
+<p>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" height="100" alt="MIT_logo">
+  </a>
+</p>
 
 Copyright (c) 2020 [amdotblacksheep](https://amdotblacksheep.itch.io/)
 
