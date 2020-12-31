@@ -1,0 +1,73 @@
+extends HBoxContainer
+
+signal show_unlock()
+signal show_info()
+
+onready var body_sprite := $Sprites/Body
+onready var head_sprite := $Sprites/Head
+onready var player_sprite := $Sprites
+onready var unlock_button := $Sprites/UnlockButton
+onready var button_sfx := $ButtonSFX
+onready var anim_play := $AnimationPlayer
+
+var body : int = UserData.last_body
+var head : int = UserData.last_head
+var cost := 1000
+
+func _ready() -> void:
+	yield(get_parent(), "ready")
+	connect("show_unlock", get_parent().unlock_screen, "_on_ShowUnlock")
+	connect("show_info", get_parent().info_screen, "_on_ShowInfo")
+	body_sprite.texture = load(Data.body_dir + '/' + Data.body[body])
+	head_sprite.texture = load(Data.head_dir + '/' + Data.head[head])
+	body_sprite.modulate = Color(Data.color[UserData.last_color])
+	head_sprite.modulate = Color(Data.color[UserData.last_color])
+
+func _on_LeftButton_pressed() -> void:
+	button_sfx.play()
+	anim_play.play("change_left")
+	yield(anim_play, "animation_finished")
+	anim_play.play("player_anim")
+
+func _on_RightButton_pressed() -> void:
+	button_sfx.play()
+	anim_play.play("change_right")
+	yield(anim_play, "animation_finished")
+	anim_play.play("player_anim")
+
+func _on_InfoButton_pressed() -> void:
+	button_sfx.play()
+	emit_signal("show_info", head)
+
+func _on_UnlockButton_pressed():
+	button_sfx.play()
+	emit_signal("show_unlock", self, "_on_UnlockedHead", head, cost)
+
+func change_sprite(new_head : int) -> void:
+	head += new_head
+	if head >= Data.head.size():
+		head = 0
+	elif head < 0:
+		head = Data.head.size() - 1
+	head_sprite.texture = load(Data.head_dir + '/' + Data.head[head])
+	if head in UserData.unlocked_head:
+		unlock_button.set_disabled(true)
+		unlock_button.set_visible(false)
+		UserData.last_head = head
+		SaveLoad.save_game()
+	else:
+		unlock_button.set_disabled(false)
+		unlock_button.set_visible(true)
+
+func change_color(new_color : int) -> void:
+	body_sprite.modulate = Color(Data.color[new_color])
+	head_sprite.modulate = Color(Data.color[new_color])
+
+func _on_UnlockedHead(index : int) -> void:
+	unlock_button.set_disabled(true)
+	unlock_button.set_visible(false)
+	UserData.unlocked_head.append(index)
+	UserData.last_head = head
+	UserData.wallet -= cost
+	get_parent().coin.set_text(str(UserData.wallet))
+	SaveLoad.save_game()

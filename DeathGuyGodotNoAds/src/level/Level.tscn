@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/level/level.gd" type="Script" id=1]
+[ext_resource path="res://src/level/ParallaxBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/ui/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ereaser/Spawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://debug/PlayerDebug.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/screen/PauseScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/screen/EndScreen.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ENTER"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParallaxBackground/ParallaxLayer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/UI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Level" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 64000.0, 640.0, 960.0, 320.0, 5120.0 ],
+"_edit_vertical_guides_": [ 0.0, 720.0, 180.0, 360.0, 540.0 ]
+}
+timing = [ 5.0, 9.52, 12.5, 14.9 ]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 100
+
+[node name="PauseScreen" parent="CanvasLayer" instance=ExtResource( 7 )]
+
+[node name="EndScreen" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="PlayerDebug" parent="CanvasLayer" instance=ExtResource( 6 )]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+pause_mode = 1
+position = Vector2( 360, 320 )
+
+[node name="Spawners" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="LSpawner" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 102, 1280 )
+max_pos = 164
+
+[node name="CLSpawner" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 274, 1280 )
+max_pos = 344
+min_pos = 196
+
+[node name="CRSpawner" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 446, 1280 )
+max_pos = 524
+min_pos = 376
+
+[node name="RSpawner" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 618, 1280 )
+max_pos = 720
+min_pos = 556
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 720
+limit_bottom = 1280
+smoothing_speed = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "ENTER"
+anims/ENTER = SubResource( 1 )
+
+[editable path="CanvasLayer/UI"]
+
+[editable path="Player"]

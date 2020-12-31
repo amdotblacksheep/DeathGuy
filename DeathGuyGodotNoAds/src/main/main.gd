@@ -1,0 +1,37 @@
+extends Node
+
+onready var splash_screen := preload("res://src/screen/SplashScreen.tscn")
+onready var main_screen := preload("res://src/screen/MainScreen.tscn")
+onready var customization_screen := preload("res://src/screen/CustomizationScreen.tscn")
+onready var level := preload("res://src/level/Level.tscn")
+onready var tutorial := preload("res://src/level/Tutorial.tscn")
+onready var os := OS.get_name()
+
+var info_string_name : Dictionary = {
+	0: "Deathguy",
+	1: "Godot",
+	2: "Kiki",
+	3: "Ace"
+}
+
+var info_string_url : Dictionary = {
+	0: "https://amdotblacksheep.itch.io/deathguy",
+	1: "https://godotengine.org/",
+	2: "https://krita.org/",
+	3: "https://www.aseprite.org/"
+}
+
+onready var fake_ads_img : Dictionary = {
+	0: preload("res://assets/fakeads/banner_amdbs.jpeg"),
+	1: preload("res://assets/fakeads/banner_deathguy.jpeg")
+}
+
+onready var fake_ads_text : Dictionary = {
+	0: "[b]More about am.blacksheep![/b]\n\nHi, I'm Alexander aka am.blacksheep.\nFor more information you can visit my blog!",
+	1: "[b]Deathguy is also avaible on Google Play![/b]\n\nHey! What if i stay on your smartphone?"
+}
+
+onready var fake_ads_url : Dictionary = {
+	0: "https://amdotblacksheep.blogspot.com/",
+	1: "https://play.google.com/store/apps/details?id=org.amdotblacksheep.deathguy"
+}
