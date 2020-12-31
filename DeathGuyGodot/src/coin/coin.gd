@@ -2,6 +2,7 @@ extends Area2D
 
 signal exit()
 
+onready var collision_shape := $CollisionShape2D
 onready var tween := $Tween
 onready var sprite := $Sprite
 onready var sfx := $AudioStreamPlayer
@@ -21,6 +22,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(_body: Node) -> void:
 	sfx.play()
+	collision_shape.call_deferred("set_disabled", true)
 	get_parent().level.coin = 10
 	tween.interpolate_property(sprite, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()

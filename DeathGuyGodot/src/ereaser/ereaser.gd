@@ -26,6 +26,6 @@ func _physics_process(delta: float) -> void:
 	translate(velocity * delta)
 
 func _on_BonusArea_body_entered(body: Node) -> void:
-	if body.state_machine.state.name == "Fall":
+	if not body.invincibility:
 		sfx.play()
 		get_parent().level.score = bonus_score

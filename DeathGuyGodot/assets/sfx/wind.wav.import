@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/wind_r1.wav-ff9bde150dfba69ad5a3229a54faa568.sample"
+path="res://.import/wind.wav-7a116a46835d124581db14339172e8c6.sample"
 
 [deps]
 
-source_file="res://assets/sfx/wind_r1.wav"
-dest_files=[ "res://.import/wind_r1.wav-ff9bde150dfba69ad5a3229a54faa568.sample" ]
+source_file="res://assets/sfx/wind.wav"
+dest_files=[ "res://.import/wind.wav-7a116a46835d124581db14339172e8c6.sample" ]
 
 [params]
 

@@ -2,7 +2,7 @@ extends PlayerState
 
 
 func enter() -> void:
-	player.collision_shape.call_deferred("set_disabled", true)
+	player.set_collision_mask_bit(0, false)
 	player.linear_velocity = Vector2.ZERO
 	player.anim_play.play("despawn")
 	yield(player.anim_play, "animation_finished")

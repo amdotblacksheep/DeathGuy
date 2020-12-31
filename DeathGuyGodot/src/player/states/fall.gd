@@ -4,7 +4,7 @@ extends PlayerState
 func enter() -> void:
 	yield(player.anim_play, "animation_finished")
 	player.anim_play.play("fall")
-	player.collision_shape.call_deferred("set_disabled", false)
+	player.set_collision_mask_bit(0, true)
 
 func physics_process(_delta: float) -> void:
 	player.direction = get_direction()
@@ -68,5 +68,5 @@ func calculate_rotation(
 func get_direction() -> float:
 	if Main.os == "Android":
 		var accelerometer = Input.get_accelerometer().x
-		return accelerometer/2.0
+		return clamp(accelerometer/2.0, -1.0, 1.0)
 	return (Input.get_action_strength("move_right") - Input.get_action_strength("move_left"))

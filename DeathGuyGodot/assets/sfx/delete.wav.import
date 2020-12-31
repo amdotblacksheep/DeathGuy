@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/spawn_r1.wav-fa23a5e85edd8f7b98df9d2d81373dc4.sample"
+path="res://.import/delete.wav-edc9dfc60c03448fca99be53d1b32e7d.sample"
 
 [deps]
 
-source_file="res://assets/sfx/spawn_r1.wav"
-dest_files=[ "res://.import/spawn_r1.wav-fa23a5e85edd8f7b98df9d2d81373dc4.sample" ]
+source_file="res://assets/sfx/delete.wav"
+dest_files=[ "res://.import/delete.wav-edc9dfc60c03448fca99be53d1b32e7d.sample" ]
 
 [params]
 

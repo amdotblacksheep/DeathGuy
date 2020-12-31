@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/delete_r1.wav-8831b243535949bb2b21efa5c9e915eb.sample"
+path="res://.import/easter_egg.wav-0b95feb05c2f9a50aef22ea483f5faff.sample"
 
 [deps]
 
-source_file="res://assets/sfx/delete_r1.wav"
-dest_files=[ "res://.import/delete_r1.wav-8831b243535949bb2b21efa5c9e915eb.sample" ]
+source_file="res://assets/sfx/easter_egg.wav"
+dest_files=[ "res://.import/easter_egg.wav-0b95feb05c2f9a50aef22ea483f5faff.sample" ]
 
 [params]
 

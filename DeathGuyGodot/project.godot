@@ -45,6 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DeathGuy"
+config/description="DeathGuy godot project with AdMob Plugin."
 run/main_scene="res://src/screen/SplashScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="deathguy"

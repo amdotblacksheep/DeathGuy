@@ -7,7 +7,7 @@
 scroll_ignore_camera_zoom = true
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_vertical_guides_": [ -1080.0, 1800.0, 720.0 ]
+"_edit_vertical_guides_": [ -1081.19, 1799.62, 720.0 ]
 }
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]

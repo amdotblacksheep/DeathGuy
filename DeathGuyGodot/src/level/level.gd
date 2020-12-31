@@ -33,7 +33,7 @@ func _ready() -> void:
 	yield(anim_play, "animation_finished")
 
 func _physics_process(delta: float) -> void:
-	background.parallax.motion_offset.x = clamp(background.parallax.motion_offset.x - player.linear_velocity.x / 10, -1080, 1800)
+	background.parallax.motion_offset.x = clamp(background.parallax.motion_offset.x - player.linear_velocity.x / 10, -1080, 1080)
 
 func randomize_spawner() -> void:
 	for i in timing.size():

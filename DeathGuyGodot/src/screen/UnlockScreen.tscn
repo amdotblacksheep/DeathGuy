@@ -2,8 +2,9 @@
 
 [ext_resource path="res://src/screen/unlock_screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=2]
-[ext_resource path="res://assets/sfx/click_r1.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sfx/error_click.wav" type="AudioStream" id=4]
+
 
 [node name="UnlockScreen" type="Control"]
 anchor_right = 1.0
