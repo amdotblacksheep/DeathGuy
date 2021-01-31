@@ -293,10 +293,12 @@ __meta__ = {
 [node name="EasterEggSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -16.0
+bus = "SFX"
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 8 )
 volume_db = -16.0
+bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"

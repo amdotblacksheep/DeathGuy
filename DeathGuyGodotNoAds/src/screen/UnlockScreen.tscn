@@ -5,7 +5,6 @@
 [ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sfx/error_click.wav" type="AudioStream" id=4]
 
-
 [node name="UnlockScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -76,9 +75,11 @@ text = "N"
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -16.0
+bus = "SFX"
 
 [node name="ErrorSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -16.0
+bus = "SFX"
 [connection signal="pressed" from="HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]

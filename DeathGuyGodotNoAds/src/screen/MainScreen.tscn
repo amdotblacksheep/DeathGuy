@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/player/head/head01.png" type="Texture" id=1]
 [ext_resource path="res://assets/shader/material/erease.tres" type="Material" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://assets/ui/button/sound_button_normal.png" type="Texture" id=10]
 [ext_resource path="res://assets/ui/button/sound_button_pressed.png" type="Texture" id=11]
 [ext_resource path="res://src/screen/EasterEggMessage.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/ui/button/music_button_normal.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui/button/music_button_pressed.png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -73,7 +75,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "reset_sprite"
 length = 0.001
 tracks/0/type = "value"
@@ -101,8 +103,7 @@ tracks/1/keys = {
 "values": [ Rect2( 0, 0, 64, 64 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "sprite_unique"
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite/Body:region_rect")
@@ -147,7 +148,6 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -192.0
@@ -213,7 +213,6 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -287,7 +286,6 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -329,16 +327,42 @@ expand = true
 [node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 252.0
-margin_right = 572.0
+margin_right = 412.0
 margin_bottom = 80.0
-rect_min_size = Vector2( 320, 0 )
+rect_min_size = Vector2( 160, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicButton" type="TextureButton" parent="HBoxContainer"]
+margin_left = 416.0
+margin_right = 496.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 500.0
+margin_right = 580.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VolumeButton" type="TextureButton" parent="HBoxContainer"]
-margin_left = 576.0
-margin_right = 656.0
+margin_left = 584.0
+margin_right = 664.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
@@ -358,12 +382,13 @@ visible = false
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -16.0
+bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "ENTER"
 anims/ENTER = SubResource( 3 )
-anims/reset_sprite = SubResource( 5 )
-anims/sprite_unique = SubResource( 4 )
+anims/reset_sprite = SubResource( 4 )
+anims/sprite_unique = SubResource( 5 )
 [connection signal="pressed" from="Sprite/EasterEgg" to="." method="_on_EasterEgg_pressed"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_TutorialButton_pressed"]
@@ -371,4 +396,5 @@ anims/sprite_unique = SubResource( 4 )
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/ItchButton" to="." method="_on_ItchButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/TwitterButton" to="." method="_on_TwitterButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/MusicButton" to="." method="_on_MusicButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/VolumeButton" to="." method="_on_VolumeButton_pressed"]

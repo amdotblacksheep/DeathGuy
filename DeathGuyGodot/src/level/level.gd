@@ -21,6 +21,8 @@ var coin := 0 setget set_coin
 
 func _ready() -> void:
 	get_tree().set_pause(false)
+	BackGroundMusic.set_stream(load(Data.levelm_dir + '/' + Data.levelmusic[0]))
+	BackGroundMusic.play()
 	randomize()
 	timing.shuffle()
 	randomize_spawner()

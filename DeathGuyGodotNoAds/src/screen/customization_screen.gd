@@ -13,6 +13,9 @@ var coin_reward := 150
 
 func _ready() -> void:
 	SaveLoad.load_game()
+	if not BackGroundMusic.is_playing():
+		BackGroundMusic.set_stream(load(Data.menum_dir + '/' + Data.menumusic[0]))
+		BackGroundMusic.play()
 	fake_ads.connect("fake_ads_closed", self, "_on_Fake_Ads_closed")
 	get_tree().set_pause(false)
 	coin.text = str(UserData.wallet)
@@ -24,6 +27,7 @@ func _on_PlayButton_pressed() -> void:
 	get_tree().change_scene_to(Main.level)
 
 func _on_AdsButton_pressed() -> void:
+	BackGroundMusic.set_stream_paused(true)
 	button_sfx.play()
 	yield(button_sfx, "finished")
 	fake_ads.show_ads(15)
@@ -39,3 +43,4 @@ func _on_Fake_Ads_closed() -> void:
 	coin.text = str(UserData.wallet)
 	rewarded = true
 	adsbutton.set_disabled(true)
+	BackGroundMusic.set_stream_paused(false)

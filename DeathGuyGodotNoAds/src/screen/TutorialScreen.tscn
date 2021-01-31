@@ -66,4 +66,5 @@ text = "Next!"
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -16.0
+bus = "SFX"
 [connection signal="pressed" from="VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]

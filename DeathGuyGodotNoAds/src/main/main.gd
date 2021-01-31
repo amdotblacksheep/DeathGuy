@@ -7,18 +7,22 @@ onready var level := preload("res://src/level/Level.tscn")
 onready var tutorial := preload("res://src/level/Tutorial.tscn")
 onready var os := OS.get_name()
 
-var info_string_name : Dictionary = {
+onready var info_string_name : Dictionary = {
 	0: "Deathguy",
 	1: "Godot",
 	2: "Kiki",
-	3: "Ace"
+	3: "Ace",
+	4: "Ardy",
+	5: "Helm"
 }
 
-var info_string_url : Dictionary = {
+onready var info_string_url : Dictionary = {
 	0: "https://amdotblacksheep.itch.io/deathguy",
 	1: "https://godotengine.org/",
 	2: "https://krita.org/",
-	3: "https://www.aseprite.org/"
+	3: "https://www.aseprite.org/",
+	4: "https://ardour.org/",
+	5: "https://tytel.org/helm/"
 }
 
 onready var fake_ads_img : Dictionary = {

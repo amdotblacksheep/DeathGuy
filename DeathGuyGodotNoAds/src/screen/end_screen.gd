@@ -29,6 +29,7 @@ func _on_RetryButton_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _on_AdsButton_pressed() -> void:
+	BackGroundMusic.set_stream_paused(true)
 	button_sfx.play()
 	yield(button_sfx, "finished")
 	fake_ads.show_ads(15)
@@ -39,6 +40,7 @@ func _on_ExitButton_pressed() -> void:
 	SaveLoad.save_game()
 	button_sfx.play()
 	yield(button_sfx, "finished")
+	BackGroundMusic.stop()
 	get_tree().change_scene_to(Main.main_screen)
 
 func _on_CustomizeButton_pressed() -> void:
@@ -47,9 +49,11 @@ func _on_CustomizeButton_pressed() -> void:
 	SaveLoad.save_game()
 	button_sfx.play()
 	yield(button_sfx, "finished")
+	BackGroundMusic.stop()
 	get_tree().change_scene_to(Main.customization_screen)
 
 func _on_Fake_Ads_closed() -> void:
 	rewarded = true
 	adsbutton.set_disabled(true)
 	emit_signal("second_chance")
+	BackGroundMusic.set_stream_paused(false)

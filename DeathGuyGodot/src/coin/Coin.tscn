@@ -4,7 +4,6 @@
 [ext_resource path="res://assets/coin/coin_spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://src/coin/coin.gd" type="Script" id=3]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0
 
@@ -48,4 +47,5 @@ anims/rotate = SubResource( 2 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 volume_db = -16.0
+bus = "SFX"
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
