@@ -1,6 +1,8 @@
 extends Area2D
 
 signal exit()
+signal sniper()
+signal burst()
 
 onready var collision_shape := $CollisionShape2D
 onready var tween := $Tween
@@ -11,12 +13,19 @@ var velocity := Vector2.ZERO
 var _gravity := -9.8
 
 func _ready() -> void:
-	connect("exit", get_parent(), "_on_ObjectExit")
+	pass
 
 func _physics_process(delta: float) -> void:
+	if get_signal_connection_list("sniper").size() != 0 and global_position.y <= 640:
+		emit_signal("sniper")
+		disconnect("sniper", get_parent(), "generate")
+	if get_signal_connection_list("burst").size() != 0 and global_position.y <= 320:
+		emit_signal("burst")
+		disconnect("burst", get_parent(), "generate")
 	if global_position.y <= 0:
-		call_deferred("queue_free")
 		emit_signal("exit")
+		get_parent().level.score = 1
+		call_deferred("queue_free")
 	velocity.y = clamp(velocity.y + _gravity * delta, -1000.0, 0.0)
 	translate(velocity * delta)
 
