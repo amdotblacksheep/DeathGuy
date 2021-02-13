@@ -6,14 +6,11 @@ signal update_record(new_record)
 
 
 onready var player := $Player
-onready var spawners := $Spawners
 onready var background := $ParallaxBackground
 onready var ui := $CanvasLayer/UI
 onready var end_screen := $CanvasLayer/EndScreen
 onready var pause_screen := $CanvasLayer/PauseScreen
 onready var anim_play := $AnimationPlayer
-
-export var timing := [0]
 
 var score := 0 setget set_score
 var coin := 0 setget set_coin
@@ -23,9 +20,6 @@ func _ready() -> void:
 	get_tree().set_pause(false)
 	BackGroundMusic.set_stream(load(Data.levelm_dir + '/' + Data.levelmusic[0]))
 	BackGroundMusic.play()
-	randomize()
-	timing.shuffle()
-	randomize_spawner()
 	connect("update_score", ui, "_on_UpdateScore")
 	connect("update_coin", ui, "_on_UpdateCoin")
 	connect("update_record", end_screen, "_on_UpdateRecord")
@@ -36,11 +30,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	background.parallax.motion_offset.x = clamp(background.parallax.motion_offset.x - player.linear_velocity.x / 10, -1080, 1080)
-
-func randomize_spawner() -> void:
-	for i in timing.size():
-		spawners.get_child(i).timer.set_wait_time(timing[i])
-		spawners.get_child(i).timer.start()
 
 func set_score(points : int) -> void:
 	score += points
