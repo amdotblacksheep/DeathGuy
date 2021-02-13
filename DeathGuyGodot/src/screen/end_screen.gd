@@ -2,11 +2,13 @@ extends Control
 
 
 signal second_chance()
+signal show_ads_warning(string)
 
 
 onready var level := get_node("/root/Level")
 onready var admob := $AdMob
 onready var admob_debugger := $CanvasLayer/AdMobDebug
+onready var ads_warning := $AdsWarning
 onready var fake_ads := $FakeAds
 onready var adsbutton := $VBoxContainer/AdsButton
 onready var record := $Label
@@ -19,6 +21,8 @@ var is_fake_ads = true
 
 func _ready() -> void:
 	fake_ads.connect("fake_ads_closed", self, "_on_Fake_Ads_closed")
+	connect("show_ads_warning", ads_warning, "_on_ShowWarning")
+	ads_warning.connect("can_show_ads", self, "_on_CanShow_Ads")
 	if (Engine.has_singleton("GodotAdMob")):
 		adsbutton.set_disabled(true)
 		admob.load_rewarded_video()
@@ -38,9 +42,12 @@ func _on_RetryButton_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _on_AdsButton_pressed() -> void:
-	BackGroundMusic.set_stream_paused(true)
 	button_sfx.play()
 	yield(button_sfx, "finished")
+	emit_signal("show_ads_warning", Main.ads_reward_string[1])
+
+func _on_CanShow_Ads() -> void:
+	BackGroundMusic.set_stream_paused(true)
 	if not is_fake_ads:
 		admob.show_rewarded_video()
 	else:
@@ -90,4 +97,3 @@ func _on_AdMob_rewarded_video_closed() -> void:
 #		admob_debugger.label.set_text("Rewarded video ad closed.")
 		admob.load_rewarded_video()
 	BackGroundMusic.set_stream_paused(false)
-

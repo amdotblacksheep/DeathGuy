@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=1]
 [ext_resource path="res://admob-lib/admob.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://src/screen/BackGroundSelector.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/screen/InfoScreen.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/fakeads/FakeAds.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/screen/AdsWarning.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ENTER"
@@ -278,6 +279,9 @@ __meta__ = {
 visible = false
 
 [node name="UnlockScreen" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="AdsWarning" parent="." instance=ExtResource( 15 )]
 visible = false
 
 [node name="FakeAds" parent="." instance=ExtResource( 14 )]
