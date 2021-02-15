@@ -16,7 +16,8 @@ DeathGuy is a free and open source game developed by amdotblacksheep. So far two
 The game was made with Godot Engine and the other software used in its development are:
 * [Krita](https://krita.org)
 * [Aseprite](https://www.aseprite.org/)
-* [SFXR](https://www.drpetter.se/project_sfxr.html)
+* [Ardour](https://ardour.org/)
+* [Helm](https://tytel.org/helm/)
 
 The Android version uses this plugin:
 * [Godot-Android-Admob-Plugin](https://github.com/Shin-NiL/Godot-Android-Admob-Plugin).
