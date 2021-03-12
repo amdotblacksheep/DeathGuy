@@ -8,7 +8,7 @@ onready var unlock_button := $HBoxContainer/UnlockButton
 onready var button_sfx := $ButtonSFX
 
 var background : int = UserData.last_background
-var cost : int = 300
+var cost : int = 500
 
 
 func _ready():
@@ -21,7 +21,7 @@ func _on_LeftButton_pressed():
 	background -= 1
 	if background < 0:
 		background = Data.background.size() - 1
-	background_texture.get_material().set_shader_param("next_texture", load(Data.back_dir + '/' + Data.background[background]))
+	background_texture.get_material().set_shader_param("next", load(Data.back_dir + '/' + Data.background[background]))
 	anim_play.play("change_left")
 	if background in UserData.unlocked_background:
 		unlock_button.disabled = true
@@ -37,7 +37,7 @@ func _on_RightButton_pressed():
 	background += 1
 	if background >= Data.background.size():
 		background = 0
-	background_texture.get_material().set_shader_param("next_texture", load(Data.back_dir + '/' + Data.background[background]))
+	background_texture.get_material().set_shader_param("next", load(Data.back_dir + '/' + Data.background[background]))
 	anim_play.play("change_right")
 	if background in UserData.unlocked_background:
 		unlock_button.disabled = true

@@ -9,7 +9,7 @@ onready var grid := $ColorGrid
 onready var button_sfx := $ButtonSFX
 
 var color : int = UserData.last_color
-var cost := 100
+var cost := 250
 
 func _ready() -> void:
 	yield(get_parent(), "ready")

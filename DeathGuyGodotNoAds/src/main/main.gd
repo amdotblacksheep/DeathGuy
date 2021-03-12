@@ -15,7 +15,9 @@ onready var info_string_name : Dictionary = {
 	4: "Ardy",
 	5: "Helm",
 	6: "Itch",
-	7: "Octocat"
+	7: "Octocat",
+	8: "Gnu",
+	9: "Tux"
 }
 
 onready var info_string_url : Dictionary = {
@@ -26,7 +28,9 @@ onready var info_string_url : Dictionary = {
 	4: "https://ardour.org/",
 	5: "https://tytel.org/helm/",
 	6: "https://itch.io/",
-	7: "https://github.com/"
+	7: "https://github.com/",
+	8: "http://www.gnu.org/gnu/gnu.html",
+	9: "https://www.linuxfoundation.org/"
 }
 
 onready var ads_reward_string : Dictionary = {
@@ -41,10 +45,10 @@ onready var fake_ads_img : Dictionary = {
 
 onready var fake_ads_text : Dictionary = {
 	0: "[b]More about am.blacksheep![/b]\n\nHi, I'm Alexander aka am.blacksheep.\nFor more information you can visit my blog!",
-	1: "[b]Deathguy is also avaible on Google Play![/b]\n\nHey! What if i stay on your smartphone?"
+	1: "[b]Deathguy is also avaible on Itch![/b]\n\nHey! I need your help also on Itch.io!"
 }
 
 onready var fake_ads_url : Dictionary = {
 	0: "https://amdotblacksheep.blogspot.com/",
-	1: "https://play.google.com/store/apps/details?id=org.amdotblacksheep.deathguy"
+	1: "https://amdotblacksheep.itch.io/deathguy"
 }

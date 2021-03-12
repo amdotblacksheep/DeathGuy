@@ -1,5 +1,6 @@
 extends Node2D
 
+signal next_gen()
 
 onready var level := get_node("/root/Level")
 onready var timer := $StateTimer
@@ -38,5 +39,6 @@ func set_StateTimer() -> void:
 
 func _on_StateTimer_timeout() -> void:
 	state_machine.state.emit_signal("change_state", next_state)
+	emit_signal("next_gen")
 	set_StateTimer()
 	set_NextState()

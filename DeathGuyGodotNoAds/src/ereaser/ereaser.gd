@@ -11,6 +11,7 @@ onready var sfx := $AudioStreamPlayer
 var velocity := Vector2.ZERO
 var gravity := -9.8
 var bonus_score := 10
+var adj := 0
 
 
 func _ready() -> void:
@@ -25,13 +26,8 @@ func _physics_process(delta: float) -> void:
 		disconnect("burst", get_parent(), "generate")
 	if global_position.y <= 0:
 		emit_signal("exit")
-		get_parent().level.score = 1
+		get_parent().level.score += 1
 		call_deferred("queue_free")
 	velocity.y = clamp(velocity.y + gravity * delta, -980.0, 0.0)
 	translate(velocity * delta)
-
-func _on_BonusArea_body_entered(body: Node) -> void:
-	var adj := int( -(velocity.y - 20.0) / 100.0 )
-	if not body.invincibility:
-		sfx.play()
-		get_parent().level.score = bonus_score * adj if adj != 0 else bonus_score
+	adj = int( -(velocity.y - 20.0) / 100.0 )

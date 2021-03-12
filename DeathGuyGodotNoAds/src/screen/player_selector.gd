@@ -12,7 +12,7 @@ onready var anim_play := $AnimationPlayer
 
 var body : int = UserData.last_body
 var head : int = UserData.last_head
-var cost := 1000
+var cost := 1500
 
 func _ready() -> void:
 	yield(get_parent(), "ready")
@@ -22,6 +22,7 @@ func _ready() -> void:
 	head_sprite.texture = load(Data.head_dir + '/' + Data.head[head])
 	body_sprite.modulate = Color(Data.color[UserData.last_color])
 	head_sprite.modulate = Color(Data.color[UserData.last_color])
+	player_sprite.material.set_shader_param("color", Data.shader_color[UserData.last_color])
 
 func _on_LeftButton_pressed() -> void:
 	button_sfx.play()
@@ -62,6 +63,7 @@ func change_sprite(new_head : int) -> void:
 func change_color(new_color : int) -> void:
 	body_sprite.modulate = Color(Data.color[new_color])
 	head_sprite.modulate = Color(Data.color[new_color])
+	player_sprite.material.set_shader_param("color", Data.shader_color[new_color])
 
 func _on_UnlockedHead(index : int) -> void:
 	unlock_button.set_disabled(true)

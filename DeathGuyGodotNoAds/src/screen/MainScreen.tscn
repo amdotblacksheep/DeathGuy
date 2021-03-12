@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://assets/player/head/head01.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/button/music_button_normal.png" type="Texture" id=1]
 [ext_resource path="res://assets/shader/material/erease.tres" type="Material" id=2]
 [ext_resource path="res://assets/fonts/deathguy_font.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=4]
-[ext_resource path="res://assets/player/body/body01.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/button/music_button_pressed.png" type="Texture" id=5]
 [ext_resource path="res://src/screen/main_screen.gd" type="Script" id=6]
 [ext_resource path="res://assets/social/itchio_logo.png" type="Texture" id=7]
 [ext_resource path="res://assets/social/twitter_logo.png" type="Texture" id=8]
@@ -12,8 +12,7 @@
 [ext_resource path="res://assets/ui/button/sound_button_normal.png" type="Texture" id=10]
 [ext_resource path="res://assets/ui/button/sound_button_pressed.png" type="Texture" id=11]
 [ext_resource path="res://src/screen/EasterEggMessage.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/ui/button/music_button_normal.png" type="Texture" id=13]
-[ext_resource path="res://assets/ui/button/music_button_pressed.png" type="Texture" id=14]
+[ext_resource path="res://assets/shader/texture/erease_texture_up.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -22,12 +21,18 @@ extra_spacing_bottom = -12
 extra_spacing_char = 2
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/body01.png-e8aa81d0177ae48eaccb2d728f0332d7.stex"
+
+[sub_resource type="StreamTexture" id=3]
+load_path = "res://.import/head01.png-e283c53691c3bde7550f3e4099cd8978.stex"
+
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:material:shader_param/value")
+tracks/0/path = NodePath("Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -36,10 +41,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Label:modulate")
+tracks/1/path = NodePath("VBoxContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -51,7 +56,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("VBoxContainer:modulate")
+tracks/2/path = NodePath("HBoxContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -63,7 +68,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HBoxContainer:modulate")
+tracks/3/path = NodePath("Sprites:material:shader_param/progress")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -72,14 +77,25 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ 1.2, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites:material:shader_param/noise")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 13 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "reset_sprite"
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite/Body:region_rect")
+tracks/0/path = NodePath("Sprites/Body:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -91,7 +107,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 0, 64, 64 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite/Head:region_rect")
+tracks/1/path = NodePath("Sprites/Head:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -103,10 +119,10 @@ tracks/1/keys = {
 "values": [ Rect2( 0, 0, 64, 64 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite/Body:region_rect")
+tracks/0/path = NodePath("Sprites/Body:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -118,7 +134,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 192, 64, 64 ), Rect2( 64, 192, 64, 64 ), Rect2( 128, 192, 64, 64 ), Rect2( 192, 192, 64, 64 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite/Head:region_rect")
+tracks/1/path = NodePath("Sprites/Head:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -129,6 +145,11 @@ tracks/1/keys = {
 "update": 1,
 "values": [ Rect2( 0, 192, 64, 64 ), Rect2( 64, 192, 64, 64 ), Rect2( 128, 192, 64, 64 ), Rect2( 192, 192, 64, 64 ) ]
 }
+
+[sub_resource type="Environment" id=8]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 1
 
 [node name="MainScreen" type="Control"]
 anchor_right = 1.0
@@ -163,7 +184,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Control" parent="."]
+[node name="Sprites" type="Control" parent="."]
 material = ExtResource( 2 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -178,35 +199,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Body" type="Sprite" parent="Sprite"]
+[node name="Body" type="Sprite" parent="Sprites"]
 use_parent_material = true
 position = Vector2( 128, 128 )
 scale = Vector2( 4, 4 )
-texture = ExtResource( 5 )
+texture = SubResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Head" type="Sprite" parent="Sprite"]
+[node name="Head" type="Sprite" parent="Sprites"]
 use_parent_material = true
 position = Vector2( 128, 128 )
 scale = Vector2( 4, 4 )
-texture = ExtResource( 1 )
+texture = SubResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="EasterEgg" type="Button" parent="Sprite"]
+[node name="EasterEgg" type="Button" parent="Sprites"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 focus_mode = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/normal = SubResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
 enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -342,8 +363,8 @@ rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
 toggle_mode = true
 enabled_focus_mode = 0
-texture_normal = ExtResource( 13 )
-texture_pressed = ExtResource( 14 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 5 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -356,9 +377,6 @@ margin_left = 500.0
 margin_right = 580.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VolumeButton" type="TextureButton" parent="HBoxContainer"]
 margin_left = 584.0
@@ -386,10 +404,13 @@ bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "ENTER"
-anims/ENTER = SubResource( 3 )
-anims/reset_sprite = SubResource( 4 )
-anims/sprite_unique = SubResource( 5 )
-[connection signal="pressed" from="Sprite/EasterEgg" to="." method="_on_EasterEgg_pressed"]
+anims/ENTER = SubResource( 5 )
+anims/reset_sprite = SubResource( 6 )
+anims/sprite_unique = SubResource( 7 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 8 )
+[connection signal="pressed" from="Sprites/EasterEgg" to="." method="_on_EasterEgg_pressed"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/CustomizeButton" to="." method="_on_CustomizeButton_pressed"]

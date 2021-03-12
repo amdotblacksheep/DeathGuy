@@ -7,6 +7,7 @@ signal update_tutorial()
 
 
 onready var player := $Player
+onready var rand_gen := $RandomGenerator
 onready var background := $ParallaxBackground
 onready var ui := $CanvasLayer/UI
 onready var end_screen := $CanvasLayer/EndScreen
@@ -28,6 +29,7 @@ func _ready() -> void:
 	connect("update_record", end_screen, "_on_UpdateRecord")
 	connect("update_tutorial", tutorial_screen, "_on_UpdateTutorial")
 	player.connect("on_player_hit", self, "_on_PlayerHit")
+	rand_gen.connect("next_gen", self, "_on_NextGen")
 	ui.connect("set_pause", pause_screen, "_on_SetPause")
 	end_screen.connect("second_chance", self, "_on_SecondChance")
 	yield(anim_play, "animation_finished")
@@ -37,11 +39,11 @@ func _physics_process(delta: float) -> void:
 	background.parallax.motion_offset.x = clamp(background.parallax.motion_offset.x - player.linear_velocity.x / 10, -1080, 1080)
 
 func set_score(points : int) -> void:
-	score += points
+	score = points
 	emit_signal("update_score", score)
 
 func set_coin(number : int) -> void:
-	coin += number
+	coin = number
 	emit_signal("update_coin", coin)
 
 func _on_PlayerHit() -> void:
@@ -52,6 +54,9 @@ func _on_PlayerHit() -> void:
 		UserData.score_record = int(score)
 	emit_signal("update_record", UserData.score_record)
 	emit_signal("update_tutorial")
+
+func _on_NextGen() -> void:
+	anim_play.play("glitch")
 
 func _on_SecondChance() -> void:
 	get_tree().set_pause(false)
