@@ -8,7 +8,7 @@ onready var unlock_button := $HBoxContainer/UnlockButton
 onready var button_sfx := $ButtonSFX
 
 var background : int = UserData.last_background
-var cost : int = 300
+var cost : int = 500
 
 
 func _ready():

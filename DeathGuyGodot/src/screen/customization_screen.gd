@@ -14,7 +14,7 @@ onready var button_sfx := $ButtonSFX
 
 var rewarded := false
 var is_fake_ads = true
-var coin_reward := 150
+var coin_reward := 300
 
 
 func _ready() -> void:

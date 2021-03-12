@@ -4,9 +4,9 @@ extends Control
 signal show_ee()
 
 
-onready var player_sprite := $Sprite
-onready var body_sprite := $Sprite/Body
-onready var head_sprite := $Sprite/Head
+onready var player_sprite := $Sprites
+onready var body_sprite := $Sprites/Body
+onready var head_sprite := $Sprites/Head
 onready var anim_play := $AnimationPlayer
 onready var volume_button := $HBoxContainer/VolumeButton
 onready var music_button := $HBoxContainer/MusicButton
@@ -28,6 +28,7 @@ func _ready() -> void:
 	body_sprite.set_texture(load(Data.body_dir + '/' + Data.body[UserData.last_body]))
 	head_sprite.set_texture(load(Data.head_dir + '/' + Data.head[UserData.last_head]))
 	player_sprite.set_modulate(Color(Data.color[UserData.last_color]))
+	player_sprite.material.set_shader_param("color", Data.shader_color[UserData.last_color])
 
 func _on_PlayButton_pressed() -> void:
 	SaveLoad.save_game()

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/screen/color_selector.gd" type="Script" id=1]
 [ext_resource path="res://src/screen/ColorSwitch.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/screen/color_grid.gd" type="Script" id=3]
 [ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=5]
+[ext_resource path="res://src/screen/color_switch.gd" type="Script" id=6]
 
 [node name="ColorSelector" type="Control"]
 margin_right = 228.0
@@ -22,54 +24,126 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorSwitch" parent="ColorGrid" instance=ExtResource( 2 )]
+[node name="ColorSwitch" type="Button" parent="ColorGrid" instance=ExtResource( 2 )]
 margin_right = 54.0
 margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+focus_mode = 0
+theme = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 color = Color( 0.886275, 0.886275, 0.886275, 1 )
 
-[node name="ColorSwitch2" parent="ColorGrid" instance=ExtResource( 2 )]
+[node name="ColorSwitch2" type="Button" parent="ColorGrid" instance=ExtResource( 2 )]
 margin_left = 58.0
 margin_right = 112.0
 margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+focus_mode = 0
+theme = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 color = Color( 0.827451, 0.168627, 0.231373, 1 )
 
-[node name="ColorSwitch3" parent="ColorGrid" instance=ExtResource( 2 )]
+[node name="ColorSwitch3" type="Button" parent="ColorGrid" instance=ExtResource( 2 )]
 margin_left = 116.0
 margin_right = 170.0
 margin_bottom = 54.0
-color = Color( 0.207843, 0.278431, 0.52549, 1 )
+rect_min_size = Vector2( 54, 54 )
+focus_mode = 0
+theme = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+color = Color( 0.113725, 0.494118, 0.27451, 1 )
 
-[node name="ColorSwitch4" parent="ColorGrid" instance=ExtResource( 2 )]
+[node name="ColorSwitch4" type="Button" parent="ColorGrid" instance=ExtResource( 2 )]
 margin_left = 174.0
 margin_right = 228.0
 margin_bottom = 54.0
-color = Color( 0.113725, 0.494118, 0.27451, 1 )
+rect_min_size = Vector2( 54, 54 )
+focus_mode = 0
+theme = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+color = Color( 0.207843, 0.278431, 0.52549, 1 )
 
-[node name="ColorSwitch5" parent="ColorGrid" instance=ExtResource( 2 )]
+[node name="ColorSwitch5" type="Button" parent="ColorGrid" instance=ExtResource( 2 )]
 margin_top = 58.0
 margin_right = 54.0
 margin_bottom = 112.0
+rect_min_size = Vector2( 54, 54 )
+focus_mode = 0
+theme = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 color = Color( 0.223529, 0.662745, 0.815686, 1 )
 
-[node name="ColorSwitch6" parent="ColorGrid" instance=ExtResource( 2 )]
+[node name="ColorSwitch6" type="Button" parent="ColorGrid" instance=ExtResource( 2 )]
 margin_left = 58.0
 margin_top = 58.0
 margin_right = 112.0
 margin_bottom = 112.0
+rect_min_size = Vector2( 54, 54 )
+focus_mode = 0
+theme = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 color = Color( 0.505882, 0.211765, 0.372549, 1 )
 
-[node name="ColorSwitch7" parent="ColorGrid" instance=ExtResource( 2 )]
+[node name="ColorSwitch7" type="Button" parent="ColorGrid" instance=ExtResource( 2 )]
 margin_left = 116.0
 margin_top = 58.0
 margin_right = 170.0
 margin_bottom = 112.0
+rect_min_size = Vector2( 54, 54 )
+focus_mode = 0
+theme = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 color = Color( 0.870588, 0.74902, 0.184314, 1 )
 
-[node name="ColorSwitch8" parent="ColorGrid" instance=ExtResource( 2 )]
+[node name="ColorSwitch8" type="Button" parent="ColorGrid" instance=ExtResource( 2 )]
 margin_left = 174.0
 margin_top = 58.0
 margin_right = 228.0
 margin_bottom = 112.0
+rect_min_size = Vector2( 54, 54 )
+focus_mode = 0
+theme = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 color = Color( 0.85098, 0.4, 0.219608, 1 )
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
