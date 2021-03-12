@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/right_texture.png-eb2e3dd6de28599b32f690b19794bb5d.stex"
+path="res://.import/erease_texture_right.png-d51c462b26030bbc927878226c717716.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shader/texture/right_texture.png"
-dest_files=[ "res://.import/right_texture.png-eb2e3dd6de28599b32f690b19794bb5d.stex" ]
+source_file="res://assets/shader/texture/erease_texture_right.png"
+dest_files=[ "res://.import/erease_texture_right.png-d51c462b26030bbc927878226c717716.stex" ]
 
 [params]
 
