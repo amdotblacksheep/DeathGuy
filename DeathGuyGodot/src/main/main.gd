@@ -13,7 +13,11 @@ onready var info_string_name : Dictionary = {
 	2: "Kiki",
 	3: "Ace",
 	4: "Ardy",
-	5: "Helm"
+	5: "Helm",
+	6: "Itch",
+	7: "Octocat",
+	8: "Gnu",
+	9: "Tux"
 }
 
 onready var info_string_url : Dictionary = {
@@ -22,7 +26,16 @@ onready var info_string_url : Dictionary = {
 	2: "https://krita.org/",
 	3: "https://www.aseprite.org/",
 	4: "https://ardour.org/",
-	5: "https://tytel.org/helm/"
+	5: "https://tytel.org/helm/",
+	6: "https://itch.io/",
+	7: "https://github.com/",
+	8: "http://www.gnu.org/gnu/gnu.html",
+	9: "https://www.linuxfoundation.org/"
+}
+
+onready var ads_reward_string : Dictionary = {
+	0 : "receive %d coins",
+	1 : "respawn"
 }
 
 onready var fake_ads_img : Dictionary = {
