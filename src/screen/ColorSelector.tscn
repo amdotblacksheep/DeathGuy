@@ -3,7 +3,8 @@
 [ext_resource path="res://src/screen/color_selector.gd" type="Script" id=1]
 [ext_resource path="res://src/screen/ColorSwitch.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/screen/color_grid.gd" type="Script" id=3]
-[ext_resource path="res://assets/sfx/click_r1.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=4]
+
 
 [node name="ColorSelector" type="Control"]
 margin_right = 228.0

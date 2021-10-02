@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/deathguy_font.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=2]
 [ext_resource path="res://src/screen/end_screen.gd" type="Script" id=3]
 [ext_resource path="res://admob-lib/admob.gd" type="Script" id=4]
 [ext_resource path="res://debug/AdMobDebug.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/sfx/click_r1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=6]
+[ext_resource path="res://src/fakeads/FakeAds.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -119,7 +120,6 @@ margin_right = 400.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-disabled = true
 text = "A second chance!"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -162,11 +162,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FakeAds" parent="." instance=ExtResource( 7 )]
+
 [node name="AdMob" type="Node" parent="."]
 script = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
+is_real = true
+is_personalized = false
+max_ad_content_rate = "T"
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

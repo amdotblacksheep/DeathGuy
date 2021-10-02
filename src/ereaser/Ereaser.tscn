@@ -2,14 +2,14 @@
 
 [ext_resource path="res://src/ereaser/ereaser.gd" type="Script" id=1]
 [ext_resource path="res://assets/ereaser/ereaser_spritesheet.png" type="Texture" id=2]
-[ext_resource path="res://assets/shader/material/invert.tres" type="Material" id=3]
-[ext_resource path="res://assets/sfx/wind_r1.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/shader/material/ereaser.tres" type="Material" id=3]
+[ext_resource path="res://assets/sfx/wind.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28, 12 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 8 )
+extents = Vector2( 32, 8 )
 
 [sub_resource type="Animation" id=3]
 length = 0.7
@@ -42,7 +42,7 @@ region_rect = Rect2( 0, 0, 64, 32 )
 shape = SubResource( 1 )
 
 [node name="LBonusArea" type="Area2D" parent="."]
-position = Vector2( -48, 0 )
+position = Vector2( -64, 0 )
 monitorable = false
 collision_layer = 0
 collision_mask = 2
@@ -51,7 +51,7 @@ collision_mask = 2
 shape = SubResource( 2 )
 
 [node name="RBonusArea" type="Area2D" parent="."]
-position = Vector2( 48, 0 )
+position = Vector2( 64, 0 )
 monitorable = false
 collision_layer = 0
 collision_mask = 2

@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=1]
 [ext_resource path="res://admob-lib/admob.gd" type="Script" id=2]
 [ext_resource path="res://assets/shader/material/invert.tres" type="Material" id=3]
 [ext_resource path="res://assets/shader/material/erease.tres" type="Material" id=4]
 [ext_resource path="res://debug/AdMobDebug.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/sfx/click_r1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/ui/coin.png" type="Texture" id=7]
 [ext_resource path="res://src/screen/customization_screen.gd" type="Script" id=8]
 [ext_resource path="res://src/screen/UnlockScreen.tscn" type="PackedScene" id=9]
@@ -13,6 +13,7 @@
 [ext_resource path="res://src/screen/PlayerSelector.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/screen/BackGroundSelector.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/screen/InfoScreen.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/fakeads/FakeAds.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ENTER"
@@ -149,8 +150,10 @@ __meta__ = {
 }
 
 [node name="BackGroundSelector" parent="." instance=ExtResource( 12 )]
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="Coin" type="HBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -680.0
@@ -193,6 +196,7 @@ align = 2
 valign = 1
 
 [node name="ColorSelector" parent="." instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -106.0
@@ -202,10 +206,20 @@ margin_bottom = 312.0
 
 [node name="PlayerSelector" parent="." instance=ExtResource( 11 )]
 
+[node name="LeftButton" parent="PlayerSelector" index="0"]
+modulate = Color( 1, 1, 1, 0 )
+
 [node name="Body" parent="PlayerSelector/Sprites" index="0"]
 material = ExtResource( 4 )
 
+[node name="InfoButton" parent="PlayerSelector/Sprites" index="2"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="RightButton" parent="PlayerSelector" index="4"]
+modulate = Color( 1, 1, 1, 0 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -240,7 +254,6 @@ rect_min_size = Vector2( 400, 80 )
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-disabled = true
 enabled_focus_mode = 0
 text = "More coin!"
 __meta__ = {
@@ -267,11 +280,16 @@ visible = false
 [node name="UnlockScreen" parent="." instance=ExtResource( 9 )]
 visible = false
 
+[node name="FakeAds" parent="." instance=ExtResource( 14 )]
+
 [node name="AdMob" type="Node" parent="."]
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
+is_real = true
+is_personalized = false
+max_ad_content_rate = "T"
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

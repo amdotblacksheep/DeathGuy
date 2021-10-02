@@ -7,7 +7,8 @@
 [ext_resource path="res://src/screen/player_selector.gd" type="Script" id=5]
 [ext_resource path="res://assets/ui/unlocked.png" type="Texture" id=6]
 [ext_resource path="res://assets/shader/material/erease.tres" type="Material" id=7]
-[ext_resource path="res://assets/sfx/click_r1.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=8]
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.776471, 0.776471, 0.776471, 1 )

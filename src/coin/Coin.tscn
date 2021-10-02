@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/sfx/coin_r1.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/sfx/coin.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/coin/coin_spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://src/coin/coin.gd" type="Script" id=3]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0

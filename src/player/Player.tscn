@@ -8,8 +8,8 @@
 [ext_resource path="res://src/player/states/respawn.gd" type="Script" id=6]
 [ext_resource path="res://src/player/states/despawn.gd" type="Script" id=7]
 [ext_resource path="res://assets/player/body/body01.png" type="Texture" id=8]
-[ext_resource path="res://assets/sfx/spawn_r1.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/sfx/delete_r1.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sfx/spawn.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sfx/delete.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 40 )
