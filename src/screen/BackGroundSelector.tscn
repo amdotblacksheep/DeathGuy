@@ -67,9 +67,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-length = 0.3
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background:material:shader_param/erease_texture")
+tracks/0/path = NodePath("Background:material:shader_param/noise")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -81,22 +81,22 @@ tracks/0/keys = {
 "values": [ ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background:material:shader_param/value")
-tracks/1/interp = 2
+tracks/1/path = NodePath("Background:material:shader_param/progress")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 1.0, 0.0 ]
+"values": [ 0.0, 1.1 ]
 }
 
 [sub_resource type="Animation" id=9]
-length = 0.3
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background:material:shader_param/erease_texture")
+tracks/0/path = NodePath("Background:material:shader_param/noise")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -108,16 +108,16 @@ tracks/0/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background:material:shader_param/value")
-tracks/1/interp = 2
+tracks/1/path = NodePath("Background:material:shader_param/progress")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 1.0, 0.0 ]
+"values": [ 0.0, 1.1 ]
 }
 
 [node name="BackGroundSelector" type="Control"]

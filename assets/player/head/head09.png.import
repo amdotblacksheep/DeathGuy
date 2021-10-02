@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/right_texture.png-eb2e3dd6de28599b32f690b19794bb5d.stex"
+path="res://.import/head09.png-86cbe03ffa00a12b4ec11a882e1812ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shader/texture/right_texture.png"
-dest_files=[ "res://.import/right_texture.png-eb2e3dd6de28599b32f690b19794bb5d.stex" ]
+source_file="res://assets/player/head/head09.png"
+dest_files=[ "res://.import/head09.png-86cbe03ffa00a12b4ec11a882e1812ec.stex" ]
 
 [params]
 

@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 		disconnect("burst", get_parent(), "generate")
 	if global_position.y <= 0:
 		emit_signal("exit")
-		get_parent().level.score = 1
+		get_parent().level.score += 1
 		call_deferred("queue_free")
 	velocity.y = clamp(velocity.y + _gravity * delta, -1000.0, 0.0)
 	translate(velocity * delta)
@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(_body: Node) -> void:
 	sfx.play()
 	collision_shape.call_deferred("set_disabled", true)
-	get_parent().level.coin = 10
+	tween.interpolate_property(get_parent().level, "coin", get_parent().level.coin, get_parent().level.coin + 10, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.interpolate_property(sprite, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 	yield(tween, "tween_completed")

@@ -39,4 +39,5 @@ func _on_NextButton_pressed() -> void:
 func _on_ExitButton_pressed() -> void:
 	button_sfx.play()
 	yield(button_sfx, "finished")
+	BackGroundMusic.stop()
 	get_tree().change_scene_to(Main.main_screen)
