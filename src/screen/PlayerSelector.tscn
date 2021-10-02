@@ -9,7 +9,6 @@
 [ext_resource path="res://assets/shader/material/erease.tres" type="Material" id=7]
 [ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=8]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.776471, 0.776471, 0.776471, 1 )
 border_color = Color( 0.368627, 0.368627, 0.368627, 1 )
@@ -272,6 +271,7 @@ enabled_focus_mode = 0
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -16.0
+bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "player_anim"

@@ -59,6 +59,7 @@ Data="*res://src/main/data.gd"
 Main="*res://src/main/main.gd"
 UserData="*res://src/main/UserData.tscn"
 SaveLoad="*res://src/main/saveload.gd"
+BackGroundMusic="*res://src/main/BackGroundMusic.tscn"
 
 [display]
 

@@ -38,6 +38,7 @@ func _on_RetryButton_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _on_AdsButton_pressed() -> void:
+	BackGroundMusic.set_stream_paused(true)
 	button_sfx.play()
 	yield(button_sfx, "finished")
 	if not is_fake_ads:
@@ -51,6 +52,7 @@ func _on_ExitButton_pressed() -> void:
 	SaveLoad.save_game()
 	button_sfx.play()
 	yield(button_sfx, "finished")
+	BackGroundMusic.stop()
 	get_tree().change_scene_to(Main.main_screen)
 
 func _on_CustomizeButton_pressed() -> void:
@@ -59,12 +61,14 @@ func _on_CustomizeButton_pressed() -> void:
 	SaveLoad.save_game()
 	button_sfx.play()
 	yield(button_sfx, "finished")
+	BackGroundMusic.stop()
 	get_tree().change_scene_to(Main.customization_screen)
 
 func _on_Fake_Ads_closed() -> void:
 	rewarded = true
 	adsbutton.set_disabled(true)
 	emit_signal("second_chance")
+	BackGroundMusic.set_stream_paused(false)
 
 func _on_AdMob_rewarded_video_loaded() -> void:
 #	admob_debugger.label.set_text("Rewarded video ad loaded.")
@@ -83,6 +87,7 @@ func _on_AdMob_rewarded(_currency : String, _ammount : int) -> void:
 
 func _on_AdMob_rewarded_video_closed() -> void:
 	if not rewarded:
-		admob_debugger.label.set_text("Rewarded video ad closed.")
+#		admob_debugger.label.set_text("Rewarded video ad closed.")
 		admob.load_rewarded_video()
+	BackGroundMusic.set_stream_paused(false)
 

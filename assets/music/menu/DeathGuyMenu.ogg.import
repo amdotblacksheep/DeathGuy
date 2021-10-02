@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DeathGuyMenu.ogg-539ae5590959f872f9d61922e6cdc721.oggstr"
+
+[deps]
+
+source_file="res://assets/music/menu/DeathGuyMenu.ogg"
+dest_files=[ "res://.import/DeathGuyMenu.ogg-539ae5590959f872f9d61922e6cdc721.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -5,10 +5,14 @@ var color : Array = ["e2e2e2", "d32b3b", "354786", "1d7e46", "39a9d0", "81365f",
 var head : Array = []
 var body : Array = []
 var background : Array = []
+var menumusic : Array = []
+var levelmusic : Array = []
 
 var head_dir := "res://assets/player/head"
 var body_dir := "res://assets/player/body"
 var back_dir := "res://assets/background"
+var menum_dir := "res://assets/music/menu"
+var levelm_dir := "res://assets/music/level"
 
 
 func _init() -> void:
@@ -43,3 +47,23 @@ func _init() -> void:
 				background.append(file_name)
 			file_name = dir.get_next()
 	background.sort()
+	
+	if dir.open(menum_dir) == OK:
+		dir.list_dir_begin()
+		var file_name := dir.get_next()
+		while(file_name != ""):
+			if file_name.ends_with(".ogg.import"):
+				file_name = file_name.replace(".import", "")
+				menumusic.append(file_name)
+			file_name = dir.get_next()
+	menumusic.sort()
+	
+	if dir.open(levelm_dir) == OK:
+		dir.list_dir_begin()
+		var file_name := dir.get_next()
+		while(file_name != ""):
+			if file_name.ends_with(".ogg.import"):
+				file_name = file_name.replace(".import", "")
+				levelmusic.append(file_name)
+			file_name = dir.get_next()
+	levelmusic.sort()

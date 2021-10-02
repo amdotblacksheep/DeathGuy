@@ -54,9 +54,9 @@ rect_min_size = Vector2( 560, 560 )
 bbcode_enabled = true
 
 [node name="NextButton" type="Button" parent="VBoxContainer"]
-margin_left = 79.0
+margin_left = 80.0
 margin_top = 1040.0
-margin_right = 479.0
+margin_right = 480.0
 margin_bottom = 1120.0
 rect_min_size = Vector2( 400, 80 )
 size_flags_horizontal = 4
@@ -66,4 +66,5 @@ text = "Next!"
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -16.0
+bus = "SFX"
 [connection signal="pressed" from="VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]

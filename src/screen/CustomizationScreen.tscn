@@ -294,6 +294,7 @@ max_ad_content_rate = "T"
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -16.0
+bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "ENTER"

@@ -16,6 +16,9 @@ var coin_reward := 150
 
 func _ready() -> void:
 	SaveLoad.load_game()
+	if not BackGroundMusic.is_playing():
+		BackGroundMusic.set_stream(load(Data.menum_dir + '/' + Data.menumusic[0]))
+		BackGroundMusic.play()
 	fake_ads.connect("fake_ads_closed", self, "_on_Fake_Ads_closed")
 	if (Engine.has_singleton("GodotAdMob")):
 		adsbutton.set_disabled(true)
@@ -33,6 +36,7 @@ func _on_PlayButton_pressed() -> void:
 	get_tree().change_scene_to(Main.level)
 
 func _on_AdsButton_pressed() -> void:
+	BackGroundMusic.set_stream_paused(true)
 	button_sfx.play()
 	yield(button_sfx, "finished")
 	if not is_fake_ads:
@@ -51,6 +55,7 @@ func _on_Fake_Ads_closed() -> void:
 	coin.text = str(UserData.wallet)
 	rewarded = true
 	adsbutton.set_disabled(true)
+	BackGroundMusic.set_stream_paused(false)
 
 func _on_AdMob_rewarded_video_loaded() -> void:
 #	admob_debugger.label.set_text("Rewarded video ad loaded.")
@@ -73,3 +78,4 @@ func _on_AdMob_rewarded_video_closed() -> void:
 	if not rewarded:
 #		admob_debugger.label.set_text("Rewarded video ad closed.")
 		admob.load_rewarded_video()
+	BackGroundMusic.set_stream_paused(false)
