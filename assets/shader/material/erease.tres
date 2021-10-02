@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
 [ext_resource path="res://assets/shader/script/erease.shader" type="Shader" id=1]
-[ext_resource path="res://assets/shader/texture/erease_texture.png" type="Texture" id=2]
+[ext_resource path="res://assets/shader/texture/erease_texture.tres" type="Texture" id=2]
 
 [resource]
 shader = ExtResource( 1 )

@@ -16,10 +16,10 @@ func physics_process(_delta: float) -> void:
 		emit_signal("change_state", "despawn")
 
 func flip_body(direction : float) -> void:
-	if direction > 0:
+	if direction > 0.1:
 		player.head.flip_h = true
 		player.body.flip_h = true
-	elif direction < 0:
+	elif direction < -0.1:
 		player.head.flip_h = false
 		player.body.flip_h = false
 

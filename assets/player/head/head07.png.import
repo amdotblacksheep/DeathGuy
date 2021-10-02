@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/erease_texture.png-941f2508466ff5b8382039c6440b6ba9.stex"
+path="res://.import/head07.png-2cf42c9622cd9447c2a0016fca70adb7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shader/texture/erease_texture.png"
-dest_files=[ "res://.import/erease_texture.png-941f2508466ff5b8382039c6440b6ba9.stex" ]
+source_file="res://assets/player/head/head07.png"
+dest_files=[ "res://.import/head07.png-2cf42c9622cd9447c2a0016fca70adb7.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

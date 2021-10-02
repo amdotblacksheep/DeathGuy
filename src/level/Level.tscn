@@ -4,13 +4,14 @@
 [ext_resource path="res://src/level/ParallaxBackground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/ui/UI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/ereaser/Spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://debug/PlayerDebug.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/screen/PauseScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/screen/EndScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/randomgenerator/RandomGenerator.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ENTER"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ParallaxBackground/ParallaxLayer:modulate")
 tracks/0/interp = 1
@@ -35,6 +36,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("RandomGenerator")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "generate"
+} ]
+}
 
 [node name="Level" type="Node2D"]
 pause_mode = 1
@@ -43,7 +58,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 64000.0, 640.0, 960.0, 320.0, 5120.0 ],
 "_edit_vertical_guides_": [ 0.0, 720.0, 180.0, 360.0, 540.0 ]
 }
-timing = [ 5.0, 9.52, 12.5, 14.9 ]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -73,27 +87,14 @@ visible = false
 pause_mode = 1
 position = Vector2( 360, 320 )
 
-[node name="Spawners" type="Node2D" parent="."]
-pause_mode = 1
+[node name="Body" parent="Player" index="0"]
+region_rect = Rect2( 192, 128, 64, 64 )
 
-[node name="LSpawner" parent="Spawners" instance=ExtResource( 5 )]
-position = Vector2( 102, 1280 )
-max_pos = 164
+[node name="Head" parent="Player" index="1"]
+region_rect = Rect2( 192, 128, 64, 64 )
 
-[node name="CLSpawner" parent="Spawners" instance=ExtResource( 5 )]
-position = Vector2( 274, 1280 )
-max_pos = 344
-min_pos = 196
-
-[node name="CRSpawner" parent="Spawners" instance=ExtResource( 5 )]
-position = Vector2( 446, 1280 )
-max_pos = 524
-min_pos = 376
-
-[node name="RSpawner" parent="Spawners" instance=ExtResource( 5 )]
-position = Vector2( 618, 1280 )
-max_pos = 720
-min_pos = 556
+[node name="RandomGenerator" parent="." instance=ExtResource( 9 )]
+position = Vector2( 0, 1280 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

@@ -9,9 +9,10 @@ onready var head := $Head
 onready var body := $Body
 onready var collision_shape := $CollisionShape2D
 onready var anim_play := $AnimationPlayer
+onready var anim_tree := $AnimationTree
 onready var inv_timeout := $Invincibility
 
-export var acceleration := 32.0
+export var acceleration := 24.0
 export var max_speed := 8.0
 export var max_rotation := PI/6
 export var rot_acc := PI/2
