@@ -1,0 +1,291 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=1]
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=2]
+[ext_resource path="res://assets/shader/material/invert.tres" type="Material" id=3]
+[ext_resource path="res://assets/shader/material/erease.tres" type="Material" id=4]
+[ext_resource path="res://debug/AdMobDebug.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sfx/click_r1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/ui/coin.png" type="Texture" id=7]
+[ext_resource path="res://src/screen/customization_screen.gd" type="Script" id=8]
+[ext_resource path="res://src/screen/UnlockScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/screen/ColorSelector.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/screen/PlayerSelector.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/screen/BackGroundSelector.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/screen/InfoScreen.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ENTER"
+tracks/0/type = "value"
+tracks/0/path = NodePath("BackGroundSelector:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Coin:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorSelector:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PlayerSelector/LeftButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PlayerSelector/RightButton:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PlayerSelector/Sprites/InfoButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("VBoxContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("PlayerSelector/Sprites/Body:material")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), null ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("PlayerSelector/Sprites/Head:material:shader_param/value")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="CustomizationScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="AdMobDebug" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackGroundSelector" parent="." instance=ExtResource( 12 )]
+
+[node name="Coin" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -680.0
+margin_top = 64.0
+margin_right = -40.0
+margin_bottom = 128.0
+grow_horizontal = 0
+rect_min_size = Vector2( 640, 64 )
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Coin"]
+margin_left = 516.0
+margin_right = 580.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 7 )
+
+[node name="VSeparator" type="VSeparator" parent="Coin"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 584.0
+margin_right = 616.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 32, 64 )
+
+[node name="Label" type="Label" parent="Coin"]
+show_behind_parent = true
+material = ExtResource( 3 )
+margin_left = 620.0
+margin_top = 19.0
+margin_right = 640.0
+margin_bottom = 44.0
+grow_horizontal = 0
+rect_clip_content = true
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="ColorSelector" parent="." instance=ExtResource( 10 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -106.0
+margin_top = 200.0
+margin_right = 122.0
+margin_bottom = 312.0
+
+[node name="PlayerSelector" parent="." instance=ExtResource( 11 )]
+
+[node name="Body" parent="PlayerSelector/Sprites" index="0"]
+material = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = 80.0
+margin_right = 200.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 400, 248 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 400, 80 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "Play!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AdsButton" type="Button" parent="VBoxContainer"]
+margin_top = 84.0
+margin_right = 400.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 400, 80 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+enabled_focus_mode = 0
+text = "More coin!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+margin_top = 168.0
+margin_right = 400.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 400, 80 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "Exit!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoScreen" parent="." instance=ExtResource( 13 )]
+visible = false
+
+[node name="UnlockScreen" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="AdMob" type="Node" parent="."]
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -16.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "ENTER"
+anims/ENTER = SubResource( 1 )
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/AdsButton" to="." method="_on_AdsButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="rewarded" from="AdMob" to="." method="_on_AdMob_rewarded"]
+[connection signal="rewarded_video_closed" from="AdMob" to="." method="_on_AdMob_rewarded_video_closed"]
+[connection signal="rewarded_video_failed_to_load" from="AdMob" to="." method="_on_AdMob_rewarded_video_failed_to_load"]
+[connection signal="rewarded_video_loaded" from="AdMob" to="." method="_on_AdMob_rewarded_video_loaded"]
+
+[editable path="PlayerSelector"]

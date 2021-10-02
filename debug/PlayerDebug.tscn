@@ -1,0 +1,152 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://debug/debug_theme.tres" type="Theme" id=1]
+[ext_resource path="res://debug/player_debug.gd" type="Script" id=2]
+
+[node name="PlayerDebug" type="Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -360.0
+margin_top = -240.0
+margin_right = 360.0
+grow_horizontal = 2
+grow_vertical = 0
+rect_min_size = Vector2( 680, 200 )
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.886275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="String" type="VBoxContainer" parent="Data"]
+margin_right = 338.0
+margin_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Direction" type="Label" parent="Data/String"]
+margin_top = 4.0
+margin_right = 338.0
+margin_bottom = 33.0
+text = "Direction:"
+
+[node name="Rotation" type="Label" parent="Data/String"]
+margin_top = 37.0
+margin_right = 338.0
+margin_bottom = 66.0
+text = "Rotation:"
+
+[node name="Velocity" type="Label" parent="Data/String"]
+margin_top = 70.0
+margin_right = 338.0
+margin_bottom = 99.0
+text = "Velocity:"
+
+[node name="State" type="Label" parent="Data/String"]
+margin_top = 103.0
+margin_right = 338.0
+margin_bottom = 132.0
+text = "State:"
+
+[node name="FPS" type="Label" parent="Data/String"]
+margin_top = 136.0
+margin_right = 338.0
+margin_bottom = 165.0
+text = "FPS:"
+
+[node name="OS" type="Label" parent="Data/String"]
+margin_top = 169.0
+margin_right = 338.0
+margin_bottom = 198.0
+text = "OS:"
+
+[node name="Value" type="VBoxContainer" parent="Data"]
+margin_left = 342.0
+margin_right = 680.0
+margin_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Direction" type="Label" parent="Data/Value"]
+margin_top = 4.0
+margin_right = 338.0
+margin_bottom = 33.0
+text = "(0, 0)"
+align = 2
+
+[node name="Rotation" type="Label" parent="Data/Value"]
+margin_top = 37.0
+margin_right = 338.0
+margin_bottom = 66.0
+text = "(0, 0)"
+align = 2
+
+[node name="Velocity" type="Label" parent="Data/Value"]
+margin_top = 70.0
+margin_right = 338.0
+margin_bottom = 99.0
+text = "(0, 0)"
+align = 2
+
+[node name="State" type="Label" parent="Data/Value"]
+margin_top = 103.0
+margin_right = 338.0
+margin_bottom = 132.0
+text = "Idle"
+align = 2
+
+[node name="FPS" type="Label" parent="Data/Value"]
+margin_top = 136.0
+margin_right = 338.0
+margin_bottom = 165.0
+text = "0"
+align = 2
+
+[node name="OS" type="Label" parent="Data/Value"]
+margin_top = 169.0
+margin_right = 338.0
+margin_bottom = 198.0
+text = "os"
+align = 2
