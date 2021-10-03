@@ -3,12 +3,12 @@
 <p><br></p>
 <p align="center">
   <a href="https://amdotblacksheep.itch.io/deathguy">
-    <img src="https://img.itch.zone/aW1nLzQ3MzE3NDEucG5n/original/xUxKqi.png" width="620" alt="DeathGuy Banner">
+    <img src="https://img.itch.zone/aW1nLzY0Mjg5OTIucG5n/original/mqfSce.png" width="620" alt="DeathGuy Banner">
   </a>
 </p>
 
 ## Free 2D game for Smartphone and Web
-
+git branch -d
 DeathGuy is a free and open source game developed by amdotblacksheep. So far two versions are available: an [Android app](https://play.google.com/store/apps/details?id=org.amdotblacksheep.deathguy) and a [browser game](https://amdotblacksheep.itch.io/deathguy).
 
 ## Software
