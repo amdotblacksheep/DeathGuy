@@ -196,3 +196,4 @@ func _on_rewarded_video_ad_opened() -> void:
 	
 func _on_rewarded_video_started() -> void:
 	emit_signal("rewarded_video_started")
+

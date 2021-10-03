@@ -1,16 +1,16 @@
 #tool
 extends GridContainer
-
-
+#
+#
 #const COLORS := [
-#	"e2e2e2", 
-#	"d32b3b", 
-#	"1d7e46", 
-#	"354786", 
-#	"39a9d0", 
-#	"81365f", 
-#	"debf2f", 
-#	"d96638"
+#	"e5e5e5", 
+#	"d62838", 
+#	"197f42", 
+#	"334784", 
+#	"33a9d0", 
+#	"843360", 
+#	"e0c12f", 
+#	"db6638"
 #]
 #
 #var Switch : PackedScene = preload("res://src/screen/ColorSwitch.tscn")

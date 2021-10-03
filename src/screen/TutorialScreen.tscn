@@ -1,10 +1,76 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/screen/tutorial_screen.gd" type="Script" id=2]
 [ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/elements/coin_spritesheet.png" type="Texture" id=4]
+[ext_resource path="res://assets/elements/eraser_spritesheet.png" type="Texture" id=5]
+[ext_resource path="res://assets/elements/star_spritesheet.png" type="Texture" id=6]
+[ext_resource path="res://assets/elements/shield_spritesheet.png" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/DeathGuyFont.otf" type="DynamicFontData" id=8]
 
-[node name="TutorialScreen" type="Control"]
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 4
+extra_spacing_char = 4
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "elements_anim"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/Elements/Eraser/Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 64, 64 ), Rect2( 64, 0, 64, 64 ), Rect2( 128, 0, 64, 64 ), Rect2( 196, 0, 64, 64 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/Elements/Coin/Sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 64, 64 ), Rect2( 64, 0, 64, 64 ), Rect2( 128, 0, 64, 64 ), Rect2( 192, 0, 64, 64 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer/Elements/Shield/Sprite:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 64, 64 ), Rect2( 64, 0, 64, 64 ), Rect2( 128, 0, 64, 64 ), Rect2( 192, 0, 64, 64 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VBoxContainer/Elements/Star/Sprite:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 64, 64 ), Rect2( 64, 0, 64, 64 ), Rect2( 128, 0, 64, 64 ), Rect2( 192, 0, 64, 64 ) ]
+}
+
+[node name="TutorialScreen" type="Panel"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,28 +80,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.368627, 0.368627, 0.368627, 0.886275 )
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 712.0
+margin_bottom = 1272.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 80.0
-margin_top = 80.0
-margin_right = -80.0
-margin_bottom = -80.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 704.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 128 )
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_right = 560.0
-margin_bottom = 1036.0
+margin_top = 132.0
+margin_right = 704.0
+margin_bottom = 1040.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -45,19 +108,220 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/CenterContainer"]
-margin_top = 238.0
-margin_right = 560.0
-margin_bottom = 798.0
+margin_left = 72.0
+margin_top = 174.0
+margin_right = 632.0
+margin_bottom = 734.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 560, 560 )
 bbcode_enabled = true
 
+[node name="Elements" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 720.0
+margin_right = 704.0
+margin_bottom = 1040.0
+rect_min_size = Vector2( 256, 320 )
+alignment = 1
+
+[node name="Eraser" type="Control" parent="VBoxContainer/Elements"]
+margin_left = 26.0
+margin_right = 186.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 160, 320 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Elements/Eraser"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 64 )
+custom_fonts/font = SubResource( 1 )
+text = "Eraser"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="VBoxContainer/Elements/Eraser"]
+position = Vector2( 16, 64 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Label2" type="Label" parent="VBoxContainer/Elements/Eraser"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -77.0
+margin_right = 80.0
+rect_min_size = Vector2( 160, 64 )
+custom_fonts/font = SubResource( 1 )
+text = "Avoid this"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coin" type="Control" parent="VBoxContainer/Elements"]
+margin_left = 190.0
+margin_right = 350.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 160, 320 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Elements/Coin"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 64 )
+custom_fonts/font = SubResource( 1 )
+text = "Coin"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="VBoxContainer/Elements/Coin"]
+position = Vector2( 48, 96 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Label2" type="Label" parent="VBoxContainer/Elements/Coin"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -77.0
+margin_right = 80.0
+rect_min_size = Vector2( 160, 64 )
+custom_fonts/font = SubResource( 1 )
+text = "Collect them"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shield" type="Control" parent="VBoxContainer/Elements"]
+margin_left = 354.0
+margin_right = 514.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 160, 320 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Elements/Shield"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 64 )
+custom_fonts/font = SubResource( 1 )
+text = "Shield"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="VBoxContainer/Elements/Shield"]
+position = Vector2( 48, 96 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Label3" type="Label" parent="VBoxContainer/Elements/Shield"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -77.0
+margin_right = 80.0
+rect_min_size = Vector2( 160, 64 )
+custom_fonts/font = SubResource( 1 )
+text = "Keep you safe"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Star" type="Control" parent="VBoxContainer/Elements"]
+margin_left = 518.0
+margin_right = 678.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 160, 320 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Elements/Star"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 64 )
+custom_fonts/font = SubResource( 1 )
+text = "Star"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="VBoxContainer/Elements/Star"]
+position = Vector2( 48, 96 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Label4" type="Label" parent="VBoxContainer/Elements/Star"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -77.0
+margin_right = 80.0
+rect_min_size = Vector2( 160, 64 )
+custom_fonts/font = SubResource( 1 )
+text = "Score x2 (max x8)"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 1044.0
+margin_right = 704.0
+margin_bottom = 1172.0
+rect_min_size = Vector2( 0, 128 )
+
 [node name="NextButton" type="Button" parent="VBoxContainer"]
-margin_left = 80.0
-margin_top = 1040.0
-margin_right = 480.0
-margin_bottom = 1120.0
+margin_left = 152.0
+margin_top = 1176.0
+margin_right = 552.0
+margin_bottom = 1264.0
 rect_min_size = Vector2( 400, 80 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -65,6 +329,10 @@ text = "Next!"
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -16.0
 bus = "SFX"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/elements_anim = SubResource( 2 )
 [connection signal="pressed" from="VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]

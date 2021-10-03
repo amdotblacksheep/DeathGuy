@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-signal fake_ads_closed()
+signal closed()
 
 onready var root_node := $Control
 onready var label := $Control/CenterContainer/RichTextLabel
@@ -40,4 +40,4 @@ func _on_Timer_timeout() -> void:
 
 func _on_CloseButton_pressed() -> void:
 	root_node.set_visible(false)
-	emit_signal("fake_ads_closed")
+	emit_signal("closed")

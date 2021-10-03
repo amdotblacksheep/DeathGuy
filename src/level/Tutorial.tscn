@@ -1,18 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/randomgenerator/RandomGenerator.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shader/material/glitch.tres" type="Material" id=2]
 [ext_resource path="res://src/level/ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/ui/UI.tscn" type="PackedScene" id=9]
-[ext_resource path="res://debug/PlayerDebug.tscn" type="PackedScene" id=12]
-[ext_resource path="res://src/screen/PauseScreen.tscn" type="PackedScene" id=15]
-[ext_resource path="res://src/screen/EndScreen.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/screen/GUI.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/level/tutorial.gd" type="Script" id=19]
 [ext_resource path="res://src/screen/TutorialScreen.tscn" type="PackedScene" id=20]
 
 [sub_resource type="Animation" id=1]
-resource_name = "ENTER"
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ParallaxBackground/ParallaxLayer:modulate")
@@ -26,25 +22,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/UI:modulate")
+tracks/1/type = "method"
+tracks/1/path = NodePath("RandomGenerator")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("RandomGenerator")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -52,35 +36,34 @@ tracks/2/keys = {
 "method": "generate"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Glitch:material:shader_param/apply")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Glitch:material:shader_param/apply")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "_on_NextGen"
+"method": "_on_state_changed"
 } ]
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "glitch"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Glitch:material:shader_param/apply")
@@ -95,14 +78,12 @@ tracks/0/keys = {
 "values": [ true, false, true, false, true, false ]
 }
 
-[sub_resource type="Environment" id=3]
-background_mode = 4
-glow_enabled = true
-glow_blend_mode = 1
-
 [node name="Level" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 19 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 960.0 ]
+}
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 
@@ -110,17 +91,9 @@ script = ExtResource( 19 )
 pause_mode = 2
 layer = 100
 
-[node name="PauseScreen" parent="CanvasLayer" instance=ExtResource( 15 )]
-
-[node name="EndScreen" parent="CanvasLayer" instance=ExtResource( 18 )]
-
-[node name="UI" parent="CanvasLayer" instance=ExtResource( 9 )]
-modulate = Color( 1, 1, 1, 0 )
+[node name="GUI" parent="CanvasLayer" instance=ExtResource( 9 )]
 
 [node name="TutorialScreen" parent="CanvasLayer" instance=ExtResource( 20 )]
-visible = false
-
-[node name="PlayerDebug" parent="CanvasLayer" instance=ExtResource( 12 )]
 visible = false
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
@@ -128,7 +101,12 @@ pause_mode = 1
 position = Vector2( 360, 320 )
 
 [node name="RandomGenerator" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 1280 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -72, 960 )
+enabled = true
+cast_to = Vector2( 840, 0 )
+collide_with_areas = true
 
 [node name="Glitch" type="ColorRect" parent="."]
 material = ExtResource( 2 )
@@ -150,16 +128,13 @@ limit_right = 720
 limit_bottom = 1280
 smoothing_speed = 10.0
 
-[node name="TimerPhase2" type="Timer" parent="."]
+[node name="MultiplierTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
-autostart = true
+
+[node name="Tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "ENTER"
 anims/ENTER = SubResource( 1 )
 anims/glitch = SubResource( 2 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
-[connection signal="timeout" from="TimerPhase2" to="." method="_on_TimerPhase2_timeout"]

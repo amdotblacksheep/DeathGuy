@@ -5,32 +5,27 @@
 [ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sfx/error_click.wav" type="AudioStream" id=4]
 
-[node name="UnlockScreen" type="Control"]
+[node name="UnlockScreen" type="ConfirmationDialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -232.0
+margin_bottom = -640.0
+rect_min_size = Vector2( 540, 640 )
+mouse_default_cursor_shape = 2
 theme = ExtResource( 2 )
+popup_exclusive = true
+window_title = "deathguy.gd"
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.368627, 0.368627, 0.368627, 0.886275 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -160.0
-margin_right = 200.0
-margin_bottom = -80.0
+margin_left = -262.0
+margin_top = -312.0
+margin_right = 262.0
+margin_bottom = 216.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
@@ -39,47 +34,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -70.0
-margin_top = -28.0
-margin_right = 70.0
-margin_bottom = 28.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="YesButton" type="Button" parent="HBoxContainer"]
-margin_right = 56.0
-margin_bottom = 56.0
-rect_min_size = Vector2( 56, 56 )
-text = "Y"
-
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 60.0
-margin_right = 80.0
-margin_bottom = 56.0
-rect_min_size = Vector2( 20, 0 )
-
-[node name="NoButton" type="Button" parent="HBoxContainer"]
-margin_left = 84.0
-margin_right = 140.0
-margin_bottom = 56.0
-rect_min_size = Vector2( 56, 56 )
-text = "N"
-
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -16.0
 bus = "SFX"
 
 [node name="ErrorSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -16.0
 bus = "SFX"
-[connection signal="pressed" from="HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="confirmed" from="." to="." method="_on_UnlockScreen_confirmed"]

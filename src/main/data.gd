@@ -1,9 +1,26 @@
 extends Node
 
 
-var color : Array = ["e2e2e2", "d32b3b", "354786", "1d7e46", "39a9d0", "81365f", "debf2f", "d96638"]
-var shader_color : Array = [Color(1.5, 1.5, 1.5, 1), Color(1.5, 0, 0, 1), Color(0, 1.5, 0, 1), Color(0, 0, 1.5, 1),
-Color(0, 1, 1.5, 1), Color(1.5, 0, 1, 1), Color(1.5, 1, 0, 1), Color(1.5, 0.5, 0, 1)]
+var color : Array = [
+	"e5e5e5", 
+	"d62838", 
+	"197f42", 
+	"334784", 
+	"33a9d0", 
+	"843360", 
+	"e0c12f", 
+	"db6638"]
+
+var shader_color : Array = [
+	Color(1.5, 1.5, 1.5, 1),
+	Color(1.5, 0, 0, 1),
+	Color(0, 1.5, 0, 1),
+	Color(0, 0, 1.5, 1),
+	Color(0, 1, 1.5, 1),
+	Color(1.5, 0, 1, 1),
+	Color(1.5, 1, 0, 1),
+	Color(1.5, 0.5, 0, 1)]
+
 var head : Array = []
 var body : Array = []
 var background : Array = []
@@ -44,7 +61,7 @@ func _init() -> void:
 		dir.list_dir_begin()
 		var file_name := dir.get_next()
 		while(file_name != ""):
-			if file_name.ends_with(".png.import"):
+			if file_name.ends_with(".jpg.import"):
 				file_name = file_name.replace(".import", "")
 				background.append(file_name)
 			file_name = dir.get_next()

@@ -1,17 +1,33 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/level/level.gd" type="Script" id=1]
 [ext_resource path="res://src/level/ParallaxBackground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/ui/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/screen/GUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/shader/material/glitch.tres" type="Material" id=5]
 [ext_resource path="res://debug/PlayerDebug.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/screen/PauseScreen.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/screen/EndScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/shader/script/erase.shader" type="Shader" id=7]
+[ext_resource path="res://assets/shader/texture/erase_texture_up.png" type="Texture" id=8]
 [ext_resource path="res://src/randomgenerator/RandomGenerator.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/shader/texture/erase_shield.png" type="Texture" id=10]
 
-[sub_resource type="Animation" id=1]
-resource_name = "ENTER"
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/progress = 0.12456
+shader_param/color = Color( 1.5, 1.5, 1.5, 1 )
+shader_param/noise = ExtResource( 8 )
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/progress = 1.2
+shader_param/color = Color( 0, 1, 1.5, 1 )
+shader_param/noise = ExtResource( 10 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+
+[sub_resource type="Animation" id=4]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ParallaxBackground/ParallaxLayer:modulate")
@@ -25,25 +41,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/UI:modulate")
+tracks/1/type = "method"
+tracks/1/path = NodePath("RandomGenerator")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("RandomGenerator")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -51,35 +55,34 @@ tracks/2/keys = {
 "method": "generate"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Glitch:material:shader_param/apply")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Glitch:material:shader_param/apply")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "_on_NextGen"
+"method": "_on_state_changed"
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "glitch"
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Glitch:material:shader_param/apply")
@@ -93,11 +96,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ true, false, true, false, true, false ]
 }
-
-[sub_resource type="Environment" id=3]
-background_mode = 4
-glow_enabled = true
-glow_blend_mode = 1
 
 [node name="Level" type="Node2D"]
 pause_mode = 1
@@ -113,12 +111,7 @@ __meta__ = {
 pause_mode = 2
 layer = 100
 
-[node name="PauseScreen" parent="CanvasLayer" instance=ExtResource( 7 )]
-
-[node name="EndScreen" parent="CanvasLayer" instance=ExtResource( 8 )]
-visible = false
-
-[node name="UI" parent="CanvasLayer" instance=ExtResource( 4 )]
+[node name="GUI" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [node name="PlayerDebug" parent="CanvasLayer" instance=ExtResource( 6 )]
 visible = false
@@ -127,8 +120,22 @@ visible = false
 pause_mode = 1
 position = Vector2( 360, 320 )
 
+[node name="Sprites" parent="Player" index="1"]
+material = SubResource( 1 )
+
+[node name="Body" parent="Player/Sprites" index="0"]
+region_rect = Rect2( 192, 128, 64, 64 )
+
+[node name="Head" parent="Player/Sprites" index="1"]
+region_rect = Rect2( 192, 128, 64, 64 )
+
+[node name="Shield" parent="Player" index="2"]
+material = SubResource( 2 )
+
+[node name="AnimationTree" parent="Player" index="12"]
+parameters/playback = SubResource( 3 )
+
 [node name="RandomGenerator" parent="." instance=ExtResource( 9 )]
-position = Vector2( 0, 1280 )
 
 [node name="Glitch" type="ColorRect" parent="."]
 material = ExtResource( 5 )
@@ -149,18 +156,20 @@ limit_left = 0
 limit_top = 0
 limit_right = 720
 limit_bottom = 1280
-smoothing_speed = 10.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="MultiplierTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "ENTER"
-anims/ENTER = SubResource( 1 )
-anims/glitch = SubResource( 2 )
+anims/ENTER = SubResource( 4 )
+anims/glitch = SubResource( 5 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
-
-[editable path="CanvasLayer/UI"]
+[connection signal="timeout" from="MultiplierTimer" to="." method="_on_MultiplierTimer_timeout"]
 
 [editable path="Player"]

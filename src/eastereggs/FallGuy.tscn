@@ -1,0 +1,189 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/shader/texture/erase_texture_up.png" type="Texture" id=1]
+[ext_resource path="res://assets/shader/script/erase.shader" type="Shader" id=2]
+[ext_resource path="res://assets/player/head/head01.png" type="Texture" id=3]
+[ext_resource path="res://src/eastereggs/fall_guy.gd" type="Script" id=4]
+[ext_resource path="res://assets/sfx/delete.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/player/body/body01.png" type="Texture" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/progress = 0.0
+shader_param/color = Color( 1.5, 1.5, 1.5, 1 )
+shader_param/noise = ExtResource( 1 )
+
+[sub_resource type="CircleShape2D" id=2]
+resource_local_to_scene = true
+radius = 64.0
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 64, 64 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/Head:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 64, 64 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites:material:shader_param/progress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites:material:shader_param/noise")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 128, 64, 64 ), Rect2( 64, 128, 64, 64 ), Rect2( 128, 128, 64, 64 ), Rect2( 192, 128, 64, 64 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/Head:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 128, 64, 64 ), Rect2( 64, 128, 64, 64 ), Rect2( 128, 128, 64, 64 ), Rect2( 192, 128, 64, 64 ) ]
+}
+
+[node name="FallGuy" type="RigidBody2D"]
+z_index = 1
+input_pickable = true
+collision_layer = 2
+collision_mask = 0
+mass = 0.816326
+script = ExtResource( 4 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 0, -20 )
+amount = 32
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 16.0
+direction = Vector2( 0, -1 )
+spread = 0.0
+gravity = Vector2( 0, -98 )
+scale_amount = 4.0
+
+[node name="Sprites" type="Node2D" parent="."]
+material = SubResource( 1 )
+position = Vector2( 0, -32 )
+
+[node name="Body" type="Sprite" parent="Sprites"]
+use_parent_material = true
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Head" type="Sprite" parent="Sprites"]
+use_parent_material = true
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -32 )
+shape = SubResource( 2 )
+
+[node name="DespawnSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/RESET = SubResource( 3 )
+anims/despawn = SubResource( 4 )
+anims/fall = SubResource( 5 )
+[connection signal="input_event" from="." to="." method="_on_FallGuy_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_FallGuy_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_FallGuy_mouse_exited"]

@@ -1,74 +1,75 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://assets/shader/texture/erease_texture_left.png" type="Texture" id=1]
+[ext_resource path="res://assets/shader/texture/erase_texture_left.png" type="Texture" id=1]
 [ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=2]
-[ext_resource path="res://assets/shader/texture/erease_texture_right.png" type="Texture" id=3]
-[ext_resource path="res://assets/ui/locked.png" type="Texture" id=4]
+[ext_resource path="res://assets/shader/texture/erase_texture_right.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/button/button_spritesheet.png" type="Texture" id=4]
 [ext_resource path="res://src/screen/player_selector.gd" type="Script" id=5]
-[ext_resource path="res://assets/ui/unlocked.png" type="Texture" id=6]
-[ext_resource path="res://assets/shader/material/erease.tres" type="Material" id=7]
+[ext_resource path="res://assets/shader/script/erase.shader" type="Shader" id=7]
 [ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=8]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-border_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-corner_radius_top_left = 28
-corner_radius_bottom_left = 28
-corner_detail = 1
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 320, 64, 64, 64 )
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-border_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-corner_radius_top_left = 28
-corner_radius_bottom_left = 28
-corner_detail = 1
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 320, 128, 64, 64 )
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-border_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-corner_radius_top_left = 28
-corner_radius_bottom_left = 28
-corner_detail = 1
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 4 )
+region_rect = Rect2( 320, 192, 64, 64 )
 
-[sub_resource type="StreamTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/progress = 0.0
+shader_param/color = Color( 1.5, 1.5, 1.5, 1 )
+shader_param/noise = ExtResource( 1 )
+
+[sub_resource type="StreamTexture" id=6]
 load_path = "res://.import/body01.png-e8aa81d0177ae48eaccb2d728f0332d7.stex"
 
-[sub_resource type="StreamTexture" id=5]
+[sub_resource type="StreamTexture" id=7]
 load_path = "res://.import/head01.png-e283c53691c3bde7550f3e4099cd8978.stex"
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 4 )
+region_rect = Rect2( 576, 64, 64, 64 )
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 4 )
+region_rect = Rect2( 576, 128, 64, 64 )
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=10]
 
-[sub_resource type="StyleBoxEmpty" id=9]
+[sub_resource type="StyleBoxEmpty" id=11]
 
-[sub_resource type="ImageTexture" id=10]
-lossy_quality = 0.0
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 4 )
+region_rect = Rect2( 576, 0, 64, 64 )
 
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-border_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-corner_radius_top_right = 28
-corner_radius_bottom_right = 28
-corner_detail = 1
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 4 )
+region_rect = Rect2( 384, 64, 64, 64 )
 
-[sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-border_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-corner_radius_top_right = 28
-corner_radius_bottom_right = 28
-corner_detail = 1
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 4 )
+region_rect = Rect2( 384, 128, 64, 64 )
 
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-border_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-corner_radius_top_right = 28
-corner_radius_bottom_right = 28
-corner_detail = 1
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 4 )
+region_rect = Rect2( 384, 192, 64, 64 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 4 )
+region_rect = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="Animation" id=17]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -108,7 +109,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 1 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=18]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -148,7 +149,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=19]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -181,43 +182,52 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -212.0
-margin_top = -180.0
-margin_right = 212.0
-margin_bottom = 76.0
+margin_left = -236.0
+margin_top = -256.0
+margin_right = 236.0
+mouse_filter = 2
 theme = ExtResource( 2 )
 alignment = 1
 script = ExtResource( 5 )
 __meta__ = {
+"_edit_horizontal_guides_": [ 640.0 ],
 "_edit_use_anchors_": false
 }
 
 [node name="LeftButton" type="Button" parent="."]
-margin_top = 100.0
-margin_right = 56.0
-margin_bottom = 156.0
-rect_min_size = Vector2( 56, 56 )
+modulate = Color( 1, 1, 1, 0.8 )
+margin_top = 88.0
+margin_right = 80.0
+margin_bottom = 168.0
+rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
 enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VSeparator" type="VSeparator" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 60.0
-margin_right = 80.0
+margin_left = 84.0
+margin_right = 104.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 20, 0 )
 
 [node name="Sprites" type="Control" parent="."]
-material = ExtResource( 7 )
-margin_left = 84.0
-margin_right = 340.0
+material = SubResource( 5 )
+margin_left = 108.0
+margin_right = 364.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 256, 256 )
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -225,7 +235,7 @@ __meta__ = {
 [node name="Body" type="Sprite" parent="Sprites"]
 position = Vector2( 128, 128 )
 scale = Vector2( 4, 4 )
-texture = SubResource( 4 )
+texture = SubResource( 6 )
 region_enabled = true
 region_rect = Rect2( 0, 64, 64, 64 )
 __meta__ = {
@@ -236,90 +246,67 @@ __meta__ = {
 use_parent_material = true
 position = Vector2( 128, 128 )
 scale = Vector2( 4, 4 )
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 region_enabled = true
 region_rect = Rect2( 0, 64, 64, 64 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="InfoButton" type="Button" parent="Sprites"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-focus_mode = 0
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Sprites/InfoButton"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -74.0
-margin_top = -25.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "info"
-align = 2
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="UnlockButton" type="TextureButton" parent="Sprites"]
+[node name="UnlockButton" type="Button" parent="Sprites"]
 visible = false
-modulate = Color( 1, 1, 1, 0.886275 )
+modulate = Color( 1, 1, 1, 0.8 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 disabled = true
-enabled_focus_mode = 0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 6 )
-texture_disabled = SubResource( 10 )
-expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VSeparator2" type="VSeparator" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 344.0
-margin_right = 364.0
+margin_left = 368.0
+margin_right = 388.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 20, 0 )
 
 [node name="RightButton" type="Button" parent="."]
-margin_left = 368.0
-margin_top = 100.0
-margin_right = 424.0
-margin_bottom = 156.0
-rect_min_size = Vector2( 56, 56 )
+modulate = Color( 1, 1, 1, 0.8 )
+margin_left = 392.0
+margin_top = 88.0
+margin_right = 472.0
+margin_bottom = 168.0
+rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 12 )
-custom_styles/normal = SubResource( 13 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
 enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -16.0
 bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "player_anim"
-anims/change_left = SubResource( 14 )
-anims/change_right = SubResource( 15 )
-anims/player_anim = SubResource( 16 )
+anims/change_left = SubResource( 17 )
+anims/change_right = SubResource( 18 )
+anims/player_anim = SubResource( 19 )
 [connection signal="pressed" from="LeftButton" to="." method="_on_LeftButton_pressed"]
-[connection signal="pressed" from="Sprites/InfoButton" to="." method="_on_InfoButton_pressed"]
 [connection signal="pressed" from="Sprites/UnlockButton" to="." method="_on_UnlockButton_pressed"]
 [connection signal="pressed" from="RightButton" to="." method="_on_RightButton_pressed"]

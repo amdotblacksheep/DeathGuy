@@ -1,0 +1,372 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://assets/ui/button/button_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/ui/coin.png" type="Texture" id=4]
+[ext_resource path="res://src/screen/PauseScreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/screen/gui.gd" type="Script" id=6]
+[ext_resource path="res://src/screen/EndScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/screen/AdsWarning.tscn" type="PackedScene" id=8]
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=9]
+[ext_resource path="res://src/fakeads/FakeAds.tscn" type="PackedScene" id=10]
+[ext_resource path="res://debug/AdMobDebug.tscn" type="PackedScene" id=11]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 64, 64, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 1 )
+region_rect = Rect2( 64, 128, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 1 )
+region_rect = Rect2( 64, 192, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 1 )
+region_rect = Rect2( 64, 0, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="DynamicFont" id=5]
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 1 )
+region_rect = Rect2( 128, 64, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 1 )
+region_rect = Rect2( 128, 128, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 1 )
+region_rect = Rect2( 128, 192, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 1 )
+region_rect = Rect2( 128, 0, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="DynamicFont" id=10]
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 1 )
+region_rect = Rect2( 192, 64, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 1 )
+region_rect = Rect2( 192, 128, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 1 )
+region_rect = Rect2( 192, 192, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 1 )
+region_rect = Rect2( 192, 0, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="DynamicFont" id=15]
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 1 )
+region_rect = Rect2( 256, 64, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 1 )
+region_rect = Rect2( 256, 128, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 1 )
+region_rect = Rect2( 256, 192, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 1 )
+region_rect = Rect2( 256, 0, 64, 64 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="DynamicFont" id=20]
+
+[node name="GUI" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 2 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 128.0 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 640.0 ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -320.0
+margin_top = 80.0
+margin_right = 320.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 640, 80 )
+theme = ExtResource( 2 )
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="CanvasLayer/HBoxContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 312.0
+margin_bottom = 64.0
+grow_horizontal = 0
+text = "000000000000"
+align = 2
+
+[node name="Multiplier" type="Label" parent="CanvasLayer/HBoxContainer"]
+margin_left = 316.0
+margin_top = 16.0
+margin_right = 396.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 80, 0 )
+align = 2
+valign = 1
+
+[node name="Wallet" type="HBoxContainer" parent="CanvasLayer/HBoxContainer"]
+margin_left = 400.0
+margin_right = 640.0
+margin_bottom = 80.0
+grow_horizontal = 0
+rect_min_size = Vector2( 240, 80 )
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Wallet"]
+margin_left = 99.0
+margin_top = 16.0
+margin_right = 120.0
+margin_bottom = 64.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0"
+align = 2
+valign = 1
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/HBoxContainer/Wallet"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 124.0
+margin_right = 156.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 32, 64 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Wallet"]
+margin_left = 160.0
+margin_right = 240.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+stretch_mode = 1
+
+[node name="PauseScreen" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Button" type="Control" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -160.0
+margin_right = -40.0
+margin_bottom = -80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/Button"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -80.0
+margin_right = 80.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Button"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -80.0
+margin_right = 80.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXButton" type="Button" parent="CanvasLayer/Button"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -80.0
+margin_right = -120.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
+toggle_mode = true
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicButton" type="Button" parent="CanvasLayer/Button"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -80.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 18 )
+custom_styles/normal = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
+toggle_mode = true
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndScreen" parent="CanvasLayer" instance=ExtResource( 7 )]
+
+[node name="AdMobDebug" parent="CanvasLayer" instance=ExtResource( 11 )]
+visible = false
+
+[node name="AdsWarning" parent="." instance=ExtResource( 8 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -270.0
+margin_top = -320.0
+margin_right = 270.0
+margin_bottom = 320.0
+window_title = "deathguy.gd"
+
+[node name="FakeAds" parent="." instance=ExtResource( 10 )]
+
+[node name="AdMob" type="Node" parent="."]
+script = ExtResource( 9 )
+is_real = true
+is_personalized = false
+max_ad_content_rate = "T"
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SFX"
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/Button/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="toggled" from="CanvasLayer/Button/SFXButton" to="." method="_on_SFXButton_toggled"]
+[connection signal="toggled" from="CanvasLayer/Button/MusicButton" to="." method="_on_MusicButton_toggled"]
+[connection signal="confirmed" from="AdsWarning" to="." method="_on_AdsWarning_confirmed"]
+[connection signal="closed" from="FakeAds" to="." method="_on_FakeAds_closed"]
+[connection signal="rewarded" from="AdMob" to="." method="_on_AdMob_rewarded"]
+[connection signal="rewarded_video_closed" from="AdMob" to="." method="_on_AdMob_rewarded_video_closed"]
+[connection signal="rewarded_video_failed_to_load" from="AdMob" to="." method="_on_AdMob_rewarded_video_failed_to_load"]
+[connection signal="rewarded_video_loaded" from="AdMob" to="." method="_on_AdMob_rewarded_video_loaded"]

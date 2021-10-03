@@ -24,6 +24,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -24.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -48,7 +49,7 @@ __meta__ = {
 
 [node name="String" type="VBoxContainer" parent="Data"]
 margin_right = 338.0
-margin_bottom = 202.0
+margin_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -60,45 +61,50 @@ __meta__ = {
 }
 
 [node name="Direction" type="Label" parent="Data/String"]
-margin_top = 4.0
 margin_right = 338.0
-margin_bottom = 33.0
+margin_bottom = 29.0
 text = "Direction:"
 
 [node name="Rotation" type="Label" parent="Data/String"]
-margin_top = 37.0
+margin_top = 33.0
 margin_right = 338.0
-margin_bottom = 66.0
+margin_bottom = 62.0
 text = "Rotation:"
 
 [node name="Velocity" type="Label" parent="Data/String"]
-margin_top = 70.0
+margin_top = 66.0
 margin_right = 338.0
-margin_bottom = 99.0
+margin_bottom = 95.0
 text = "Velocity:"
 
 [node name="State" type="Label" parent="Data/String"]
-margin_top = 103.0
+margin_top = 99.0
 margin_right = 338.0
-margin_bottom = 132.0
+margin_bottom = 128.0
 text = "State:"
 
 [node name="FPS" type="Label" parent="Data/String"]
-margin_top = 136.0
+margin_top = 132.0
 margin_right = 338.0
-margin_bottom = 165.0
+margin_bottom = 161.0
 text = "FPS:"
 
 [node name="OS" type="Label" parent="Data/String"]
-margin_top = 169.0
+margin_top = 165.0
 margin_right = 338.0
-margin_bottom = 198.0
+margin_bottom = 194.0
 text = "OS:"
+
+[node name="PVel" type="Label" parent="Data/String"]
+margin_top = 198.0
+margin_right = 338.0
+margin_bottom = 227.0
+text = "Pvel:"
 
 [node name="Value" type="VBoxContainer" parent="Data"]
 margin_left = 342.0
 margin_right = 680.0
-margin_bottom = 202.0
+margin_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -110,43 +116,49 @@ __meta__ = {
 }
 
 [node name="Direction" type="Label" parent="Data/Value"]
-margin_top = 4.0
 margin_right = 338.0
-margin_bottom = 33.0
+margin_bottom = 29.0
 text = "(0, 0)"
 align = 2
 
 [node name="Rotation" type="Label" parent="Data/Value"]
-margin_top = 37.0
+margin_top = 33.0
 margin_right = 338.0
-margin_bottom = 66.0
+margin_bottom = 62.0
 text = "(0, 0)"
 align = 2
 
 [node name="Velocity" type="Label" parent="Data/Value"]
-margin_top = 70.0
+margin_top = 66.0
 margin_right = 338.0
-margin_bottom = 99.0
+margin_bottom = 95.0
 text = "(0, 0)"
 align = 2
 
 [node name="State" type="Label" parent="Data/Value"]
-margin_top = 103.0
+margin_top = 99.0
 margin_right = 338.0
-margin_bottom = 132.0
+margin_bottom = 128.0
 text = "Idle"
 align = 2
 
 [node name="FPS" type="Label" parent="Data/Value"]
-margin_top = 136.0
+margin_top = 132.0
 margin_right = 338.0
-margin_bottom = 165.0
+margin_bottom = 161.0
 text = "0"
 align = 2
 
 [node name="OS" type="Label" parent="Data/Value"]
-margin_top = 169.0
+margin_top = 165.0
 margin_right = 338.0
-margin_bottom = 198.0
+margin_bottom = 194.0
 text = "os"
+align = 2
+
+[node name="PVel" type="Label" parent="Data/Value"]
+margin_top = 198.0
+margin_right = 338.0
+margin_bottom = 227.0
+text = "0"
 align = 2

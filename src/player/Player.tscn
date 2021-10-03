@@ -1,8 +1,8 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://assets/player/head/head01.png" type="Texture" id=1]
 [ext_resource path="res://src/player/player_state_machine.gd" type="Script" id=2]
-[ext_resource path="res://assets/shader/material/erease.tres" type="Material" id=3]
+[ext_resource path="res://assets/shader/material/erase.tres" type="Material" id=3]
 [ext_resource path="res://src/player/player.gd" type="Script" id=4]
 [ext_resource path="res://src/player/states/fall.gd" type="Script" id=5]
 [ext_resource path="res://src/player/states/respawn.gd" type="Script" id=6]
@@ -10,16 +10,28 @@
 [ext_resource path="res://assets/player/body/body01.png" type="Texture" id=8]
 [ext_resource path="res://assets/sfx/spawn.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sfx/delete.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/shader/texture/erease_texture_up.png" type="Texture" id=11]
+[ext_resource path="res://assets/shader/texture/erase_texture_up.png" type="Texture" id=11]
+[ext_resource path="res://assets/player/player_shield_spritesheet.png" type="Texture" id=12]
+[ext_resource path="res://assets/shader/script/erase.shader" type="Shader" id=13]
+[ext_resource path="res://assets/shader/texture/erase_shield.png" type="Texture" id=14]
+[ext_resource path="res://src/deathguy_env.tres" type="Environment" id=15]
+[ext_resource path="res://assets/sfx/shield.wav" type="AudioStream" id=16]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24, 40 )
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 13 )
+shader_param/progress = 1.2
+shader_param/color = Color( 0, 1, 1.5, 1 )
+shader_param/noise = ExtResource( 14 )
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 39.9998
-height = 112.0
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 56 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 55.9998
+height = 96.0004
+
+[sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites/Body:region_rect")
@@ -46,114 +58,16 @@ tracks/1/keys = {
 "values": [ Rect2( 0, 0, 64, 64 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AudioStreamPlayer:stream")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ null ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("AudioStreamPlayer:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprites:material:shader_param/progress")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("AnimationTree:active")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("CPUParticles2D:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Sprites:material:shader_param/noise")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 11 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-tracks/0/type = "value"
-tracks/0/path = NodePath("AudioStreamPlayer:stream")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 10 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
 tracks/2/path = NodePath("Sprites:material:shader_param/progress")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.1, 1.5 ]
+"values": [ 0.0 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CPUParticles2D:emitting")
@@ -167,8 +81,70 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites:material:shader_param/noise")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Shield:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Shield:material:shader_param/progress")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.2 ]
+}
 
 [sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.1, 1.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -194,21 +170,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Rect2( 0, 128, 64, 64 ), Rect2( 64, 128, 64, 64 ), Rect2( 128, 128, 64, 64 ), Rect2( 192, 128, 64, 64 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-length = 5.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationTree:active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -240,57 +201,94 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-length = 5.0
+resource_name = "material"
+length = 0.4
+loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("AudioStreamPlayer:stream")
+tracks/0/path = NodePath("Sprites:material:shader_param/progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 9 ) ]
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.1, 0.3 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.5, 0.5, 1.0, 0.25, 0.5, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/path = NodePath("CPUParticles2D:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprites:material:shader_param/progress")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 1.5, 0.5, 1.0, 0.25, 0.5, 0.1 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CPUParticles2D:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 4.5 ),
+"times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shield:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 64, 64 ), Rect2( 64, 0, 64, 64 ), Rect2( 128, 0, 64, 64 ), Rect2( 192, 0, 64, 64 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shield:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.2 ]
+}
+
+[sub_resource type="Animation" id=12]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shield:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.2, 0.0 ]
+}
+
+[sub_resource type="Animation" id=13]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites/Body:region_rect")
@@ -317,24 +315,210 @@ tracks/1/keys = {
 "values": [ Rect2( 0, 192, 64, 64 ), Rect2( 64, 192, 64, 64 ), Rect2( 128, 192, 64, 64 ), Rect2( 192, 192, 64, 64 ) ]
 }
 
-[sub_resource type="AnimationNodeAdd2" id=10]
+[sub_resource type="AnimationNodeAnimation" id=57]
+animation = "RESET"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAdd2" id=14]
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "despawn"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "fall"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeBlendTree" id=17]
+graph_offset = Vector2( -120, 110.5 )
+nodes/Add2/node = SubResource( 14 )
+nodes/Add2/position = Vector2( 220, 200 )
+nodes/Animation/node = SubResource( 15 )
+nodes/Animation/position = Vector2( 0, 200 )
+nodes/Animation2/node = SubResource( 16 )
+nodes/Animation2/position = Vector2( 0, 320 )
+nodes/output/position = Vector2( 400, 200 )
+node_connections = [ "output", 0, "Add2", "Add2", 0, "Animation", "Add2", 1, "Animation2" ]
+
+[sub_resource type="AnimationNodeAdd2" id=18]
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "fall"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "material"
+
+[sub_resource type="AnimationNodeBlendTree" id=21]
+nodes/Add2/node = SubResource( 18 )
+nodes/Add2/position = Vector2( 300, 100 )
+nodes/Animation/node = SubResource( 19 )
+nodes/Animation/position = Vector2( 60, 100 )
+nodes/Animation2/node = SubResource( 20 )
+nodes/Animation2/position = Vector2( 40, 220 )
+nodes/output/position = Vector2( 500, 120 )
+node_connections = [ "output", 0, "Add2", "Add2", 0, "Animation", "Add2", 1, "Animation2" ]
+
+[sub_resource type="AnimationNodeAdd2" id=22]
+
+[sub_resource type="AnimationNodeAdd2" id=23]
+
+[sub_resource type="AnimationNodeAdd2" id=24]
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "shield_despawn"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "fall"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "material"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "shield"
+
+[sub_resource type="AnimationNodeBlendTree" id=29]
+graph_offset = Vector2( 0, 129.5 )
+nodes/Add2/node = SubResource( 24 )
+nodes/Add2/position = Vector2( 400, 240 )
+nodes/Add2-2/node = SubResource( 22 )
+nodes/Add2-2/position = Vector2( 600, 380 )
+nodes/Add2-3/node = SubResource( 23 )
+nodes/Add2-3/position = Vector2( 800, 500 )
+nodes/Animation/node = SubResource( 25 )
+nodes/Animation/position = Vector2( 180, 160 )
+nodes/Animation2/node = SubResource( 26 )
+nodes/Animation2/position = Vector2( 220, 320 )
+nodes/Animation3/node = SubResource( 27 )
+nodes/Animation3/position = Vector2( 400, 460 )
+nodes/Animation4/node = SubResource( 28 )
+nodes/Animation4/position = Vector2( 600, 560 )
+nodes/output/position = Vector2( 1000, 500 )
+node_connections = [ "output", 0, "Add2-3", "Add2-2", 0, "Add2", "Add2-2", 1, "Animation3", "Add2", 0, "Animation", "Add2", 1, "Animation2", "Add2-3", 0, "Add2-2", "Add2-3", 1, "Animation4" ]
+
+[sub_resource type="AnimationNodeAdd2" id=30]
+
+[sub_resource type="AnimationNodeAnimation" id=31]
 animation = "respawn"
 
-[sub_resource type="AnimationNodeBlendTree" id=13]
-graph_offset = Vector2( 0, 58.25 )
-nodes/Add2/node = SubResource( 10 )
-nodes/Add2/position = Vector2( 400, 120 )
-nodes/fall/node = SubResource( 11 )
-nodes/fall/position = Vector2( 200, 100 )
-nodes/output/position = Vector2( 600, 140 )
-nodes/resp/node = SubResource( 12 )
-nodes/resp/position = Vector2( 200, 200 )
-node_connections = [ "output", 0, "Add2", "Add2", 0, "fall", "Add2", 1, "resp" ]
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "fall"
+
+[sub_resource type="AnimationNodeBlendTree" id=33]
+graph_offset = Vector2( 0, 40 )
+nodes/Add2/node = SubResource( 30 )
+nodes/Add2/position = Vector2( 380, 100 )
+nodes/Animation/node = SubResource( 31 )
+nodes/Animation/position = Vector2( 80, 100 )
+nodes/Animation2/node = SubResource( 32 )
+nodes/Animation2/position = Vector2( 80, 240 )
+nodes/output/position = Vector2( 600, 160 )
+node_connections = [ "output", 0, "Add2", "Add2", 0, "Animation", "Add2", 1, "Animation2" ]
+
+[sub_resource type="AnimationNodeAdd2" id=34]
+
+[sub_resource type="AnimationNodeAdd2" id=35]
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "fall"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "material"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "shield"
+
+[sub_resource type="AnimationNodeBlendTree" id=39]
+nodes/Add2/node = SubResource( 35 )
+nodes/Add2/position = Vector2( 400, 60 )
+nodes/Add2-2/node = SubResource( 34 )
+nodes/Add2-2/position = Vector2( 600, 180 )
+nodes/Animation/node = SubResource( 36 )
+nodes/Animation/position = Vector2( 200, 0 )
+nodes/Animation2/node = SubResource( 37 )
+nodes/Animation2/position = Vector2( 200, 120 )
+nodes/Animation3/node = SubResource( 38 )
+nodes/Animation3/position = Vector2( 400, 240 )
+nodes/output/position = Vector2( 800, 180 )
+node_connections = [ "output", 0, "Add2-2", "Add2-2", 0, "Add2", "Add2-2", 1, "Animation3", "Add2", 0, "Animation", "Add2", 1, "Animation2" ]
+
+[sub_resource type="AnimationNodeAdd2" id=40]
+
+[sub_resource type="AnimationNodeAdd2" id=41]
+
+[sub_resource type="AnimationNodeAdd2" id=42]
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "spawn_shield"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "fall"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "material"
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "shield"
+
+[sub_resource type="AnimationNodeBlendTree" id=47]
+nodes/Add2/node = SubResource( 42 )
+nodes/Add2/position = Vector2( 380, 160 )
+nodes/Add2-2/node = SubResource( 40 )
+nodes/Add2-2/position = Vector2( 600, 280 )
+nodes/Add2-3/node = SubResource( 41 )
+nodes/Add2-3/position = Vector2( 800, 420 )
+nodes/Animation/node = SubResource( 43 )
+nodes/Animation/position = Vector2( 140, 140 )
+nodes/Animation2/node = SubResource( 44 )
+nodes/Animation2/position = Vector2( 140, 280 )
+nodes/Animation3/node = SubResource( 45 )
+nodes/Animation3/position = Vector2( 380, 340 )
+nodes/Animation4/node = SubResource( 46 )
+nodes/Animation4/position = Vector2( 600, 460 )
+nodes/output/position = Vector2( 1000, 420 )
+node_connections = [ "output", 0, "Add2-3", "Add2-2", 0, "Add2", "Add2-2", 1, "Animation3", "Add2", 0, "Animation", "Add2", 1, "Animation2", "Add2-3", 0, "Add2-2", "Add2-3", 1, "Animation4" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=51]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachine" id=55]
+states/RESET/node = SubResource( 57 )
+states/RESET/position = Vector2( 22, 216 )
+states/despawn/node = SubResource( 17 )
+states/despawn/position = Vector2( 522, 332 )
+states/fall/node = SubResource( 21 )
+states/fall/position = Vector2( 252, 216 )
+states/not-shielded/node = SubResource( 29 )
+states/not-shielded/position = Vector2( 522, 64 )
+states/respawn/node = SubResource( 33 )
+states/respawn/position = Vector2( 22, 332 )
+states/shield/node = SubResource( 39 )
+states/shield/position = Vector2( 252, 64 )
+states/shielded/node = SubResource( 47 )
+states/shielded/position = Vector2( 22, 64 )
+transitions = [ "despawn", "respawn", SubResource( 48 ), "shield", "not-shielded", SubResource( 49 ), "shielded", "shield", SubResource( 50 ), "not-shielded", "fall", SubResource( 51 ), "fall", "shielded", SubResource( 52 ), "fall", "despawn", SubResource( 53 ), "respawn", "fall", SubResource( 54 ), "RESET", "respawn", SubResource( 58 ) ]
+start_node = "RESET"
+end_node = "fall"
+graph_offset = Vector2( -194.586, 0 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=56]
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -343,45 +527,54 @@ script = ExtResource( 4 )
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 0, 16 )
 emitting = false
-amount = 64
-lifetime = 3.0
+amount = 32
+lifetime = 2.5
 local_coords = false
 emission_shape = 1
 emission_sphere_radius = 32.0
+flag_align_y = true
 direction = Vector2( 0, -1 )
 spread = 0.0
 gravity = Vector2( 0, -98 )
-scale_amount = 4.0
+scale_amount = 8.0
 
 [node name="Sprites" type="Node2D" parent="."]
 material = ExtResource( 3 )
+scale = Vector2( 2, 2 )
 
 [node name="Body" type="Sprite" parent="Sprites"]
 use_parent_material = true
-scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="Head" type="Sprite" parent="Sprites"]
 use_parent_material = true
-scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
+[node name="Shield" type="Sprite" parent="."]
+material = SubResource( 1 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="EraserDetector" type="Area2D" parent="."]
+monitorable = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraserDetector"]
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 2 )
+initial_state = NodePath("Respawn")
 
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
@@ -389,33 +582,69 @@ script = ExtResource( 5 )
 [node name="Despawn" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
 
+[node name="Timer" type="Timer" parent="StateMachine/Despawn"]
+wait_time = 0.7
+one_shot = true
+
 [node name="Respawn" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
 
-[node name="Invincibility" type="Timer" parent="."]
+[node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -16.0
+[node name="ShieldTimer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="DespawnSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 bus = "SFX"
 
-[node name="Tween" type="Tween" parent="."]
+[node name="RespawnSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "SFX"
+
+[node name="ShieldSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = 8.0
+pitch_scale = 2.0
+bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/RESET = SubResource( 3 )
-anims/despawn = SubResource( 4 )
-anims/fall = SubResource( 5 )
-anims/fall+resp = SubResource( 6 )
+anims/RESET = SubResource( 4 )
+anims/despawn = SubResource( 5 )
+anims/fall = SubResource( 6 )
 anims/idle = SubResource( 7 )
-anims/respawn = SubResource( 8 )
-anims/unique = SubResource( 9 )
+anims/material = SubResource( 8 )
+anims/respawn = SubResource( 9 )
+anims/shield = SubResource( 10 )
+anims/shield_despawn = SubResource( 11 )
+anims/spawn_shield = SubResource( 12 )
+anims/unique = SubResource( 13 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 13 )
+tree_root = SubResource( 55 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/Add2/add_amount = 1.0
-[connection signal="body_entered" from="EraserDetector" to="." method="_on_EraserDetector_body_entered"]
-[connection signal="body_exited" from="EraserDetector" to="." method="_on_EraserDetector_body_exited"]
-[connection signal="timeout" from="Invincibility" to="." method="_on_Invincibility_timeout"]
+active = true
+parameters/playback = SubResource( 56 )
+parameters/despawn/Add2/add_amount = 1.0
+parameters/fall/Add2/add_amount = 1.0
+parameters/not-shielded/Add2/add_amount = 1.0
+parameters/not-shielded/Add2-2/add_amount = 1.0
+parameters/not-shielded/Add2-3/add_amount = 1.0
+parameters/respawn/Add2/add_amount = 1.0
+parameters/shield/Add2/add_amount = 1.0
+parameters/shield/Add2-2/add_amount = 1.0
+parameters/shielded/Add2/add_amount = 1.0
+parameters/shielded/Add2-2/add_amount = 1.0
+parameters/shielded/Add2-3/add_amount = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 15 )
+
+[connection signal="area_entered" from="EraserDetector" to="." method="_on_EraserDetector_area_entered"]
+[connection signal="area_exited" from="EraserDetector" to="." method="_on_EraserDetector_area_exited"]
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_Respawn_timeout"]
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_ShieldTimer_timeout"]

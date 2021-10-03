@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/screen/color_switch.gd"
 }, {
+"base": "Area2D",
+"class": "Element",
+"language": "GDScript",
+"path": "res://src/randomgenerator/element/element.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/player/player.gd"
+}, {
 "base": "State",
 "class": "PlayerState",
 "language": "GDScript",
@@ -42,6 +52,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AdMob": "res://admob-lib/icon.png",
 "ColorSwitch": "",
+"Element": "",
+"Player": "",
 "PlayerState": "",
 "RGenState": "",
 "State": "",
@@ -51,13 +63,19 @@ _global_script_class_icons={
 [application]
 
 config/name="DeathGuy"
-config/description="DeathGuy godot project with AdMob Plugin."
+config/description="DeathGuys are seeking revenge! Join the deathsquad and help them survive.
+Play DeathGuy on Android: https://play.google.com/store/apps/details?id=org.amdotblacksheep.deathguy
+Play DeathGuy on Itch.io: https://amdotblacksheep.itch.io/deathguy"
 run/main_scene="res://src/screen/SplashScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="deathguy"
 boot_splash/image="res://assets/splash_screen/splash_back.png"
-boot_splash/bg_color=Color( 0.188235, 0.188235, 0.188235, 1 )
+boot_splash/bg_color=Color( 0.298039, 0.298039, 0.298039, 1 )
 config/icon="res://icon.png"
+
+[audio]
+
+default_bus_layout="res://src/deathguy_bus_layout.tres"
 
 [autoload]
 
@@ -110,7 +128,8 @@ quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
-quality/2d/use_pixel_snap=true
+2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
-batching/precision/uv_contract=true
+environment/default_clear_color=Color( 0.298039, 0.298039, 0.298039, 1 )
 environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true

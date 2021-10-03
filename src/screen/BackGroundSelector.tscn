@@ -1,60 +1,67 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://assets/background/background01.png" type="Texture" id=1]
+[ext_resource path="res://assets/background/background01.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=2]
-[ext_resource path="res://assets/shader/material/change_texture.tres" type="Material" id=3]
-[ext_resource path="res://assets/shader/texture/right_texture.png" type="Texture" id=4]
-[ext_resource path="res://assets/shader/texture/left_texture.png" type="Texture" id=5]
+[ext_resource path="res://assets/shader/script/change_texture.shader" type="Shader" id=3]
+[ext_resource path="res://assets/shader/texture/left_texture.png" type="Texture" id=4]
+[ext_resource path="res://assets/shader/texture/right_texture.png" type="Texture" id=5]
 [ext_resource path="res://src/screen/background_selector.gd" type="Script" id=6]
 [ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/ui/button/button_spritesheet.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/DeathGuyFont.otf" type="DynamicFontData" id=9]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-border_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-corner_radius_top_left = 28
-corner_radius_bottom_left = 28
-corner_detail = 1
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/progress = 0.0
+shader_param/noise = ExtResource( 5 )
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-border_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-corner_radius_top_left = 28
-corner_radius_bottom_left = 28
-corner_detail = 1
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 8 )
+region_rect = Rect2( 320, 64, 64, 64 )
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-border_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-corner_radius_top_left = 28
-corner_radius_bottom_left = 28
-corner_detail = 1
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 8 )
+region_rect = Rect2( 320, 128, 64, 64 )
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-border_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-corner_radius_top_right = 28
-corner_radius_bottom_right = 28
-corner_detail = 1
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 8 )
+region_rect = Rect2( 320, 192, 64, 64 )
 
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-border_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-corner_radius_top_right = 28
-corner_radius_bottom_right = 28
-corner_detail = 1
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 8 )
+region_rect = Rect2( 320, 0, 64, 64 )
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.368627, 0.368627, 0.368627, 1 )
-border_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-corner_radius_top_right = 28
-corner_radius_bottom_right = 28
-corner_detail = 1
+[sub_resource type="DynamicFont" id=6]
+size = 48
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+extra_spacing_bottom = -9
+extra_spacing_char = 4
+extra_spacing_space = 2
+font_data = ExtResource( 9 )
 
-[sub_resource type="Animation" id=7]
-resource_name = "RESET"
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 8 )
+region_rect = Rect2( 384, 64, 64, 64 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 8 )
+region_rect = Rect2( 384, 128, 64, 64 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 8 )
+region_rect = Rect2( 384, 192, 64, 64 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 8 )
+region_rect = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background:material:shader_param/value")
+tracks/0/path = NodePath(".:material:shader_param/progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -63,78 +70,71 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.0 ]
+"values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=12]
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background:material:shader_param/noise")
+tracks/0/path = NodePath(".:material:shader_param/progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ) ]
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.5 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background:material:shader_param/progress")
+tracks/1/path = NodePath(".:material:shader_param/noise")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.1 ]
-}
-
-[sub_resource type="Animation" id=9]
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Background:material:shader_param/noise")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ ExtResource( 4 ) ]
 }
+
+[sub_resource type="Animation" id=13]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.5 ]
+}
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background:material:shader_param/progress")
+tracks/1/path = NodePath(".:material:shader_param/noise")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.1 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
 }
 
-[node name="BackGroundSelector" type="Control"]
+[node name="BackgroundSelector" type="TextureRect"]
+material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background" type="TextureRect" parent="."]
-material = ExtResource( 3 )
-anchor_right = 1.0
-anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -143,25 +143,29 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -120.0
-margin_bottom = -40.0
+margin_top = -160.0
+margin_bottom = -60.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LeftButton" type="Button" parent="HBoxContainer"]
-margin_left = 16.0
-margin_top = 12.0
-margin_right = 72.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 56, 56 )
+modulate = Color( 1, 1, 1, 0.8 )
+margin_left = 26.0
+margin_top = 10.0
+margin_right = 106.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -169,16 +173,22 @@ __meta__ = {
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 76.0
-margin_right = 156.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 0 )
+margin_left = 110.0
+margin_right = 130.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 20, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="UnlockButton" type="Button" parent="HBoxContainer"]
-margin_left = 160.0
-margin_right = 560.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 400, 80 )
+margin_left = 134.0
+margin_right = 586.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 400, 100 )
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 6 )
 disabled = true
 enabled_focus_mode = 0
 text = "Unlock Background"
@@ -188,23 +198,30 @@ __meta__ = {
 
 [node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 564.0
-margin_right = 644.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 0 )
+margin_left = 590.0
+margin_right = 610.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 20, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RightButton" type="Button" parent="HBoxContainer"]
-margin_left = 648.0
-margin_top = 12.0
-margin_right = 704.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 56, 56 )
+modulate = Color( 1, 1, 1, 0.8 )
+margin_left = 614.0
+margin_top = 10.0
+margin_right = 694.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
 enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -212,14 +229,13 @@ __meta__ = {
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -16.0
 bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/RESET = SubResource( 7 )
-anims/change_left = SubResource( 8 )
-anims/change_right = SubResource( 9 )
+anims/RESET = SubResource( 11 )
+anims/change_left = SubResource( 12 )
+anims/change_right = SubResource( 13 )
 [connection signal="pressed" from="HBoxContainer/LeftButton" to="." method="_on_LeftButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/UnlockButton" to="." method="_on_UnlockButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/RightButton" to="." method="_on_RightButton_pressed"]

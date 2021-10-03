@@ -1,35 +1,36 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/randomgenerator/random_generator.gd" type="Script" id=1]
-[ext_resource path="res://src/ereaser/Ereaser.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/coin/Coin.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/randomgenerator/rgen_state_machine.gd" type="Script" id=4]
-[ext_resource path="res://src/randomgenerator/states/standard_gen.gd" type="Script" id=5]
-[ext_resource path="res://src/randomgenerator/states/tunnel_gen.gd" type="Script" id=6]
-[ext_resource path="res://src/randomgenerator/states/sniper_gen.gd" type="Script" id=7]
-[ext_resource path="res://src/randomgenerator/states/burst_gen.gd" type="Script" id=8]
+[ext_resource path="res://src/randomgenerator/states/standard.gd" type="Script" id=5]
+[ext_resource path="res://src/randomgenerator/states/tunnel.gd" type="Script" id=6]
+[ext_resource path="res://src/randomgenerator/states/sniper.gd" type="Script" id=7]
+[ext_resource path="res://src/randomgenerator/states/burst.gd" type="Script" id=8]
 
 [node name="RandomGenerator" type="Node2D"]
+position = Vector2( 0, 1280 )
+z_index = 1
 script = ExtResource( 1 )
-object = [ ExtResource( 3 ), ExtResource( 2 ) ]
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )
+initial_state = NodePath("Standard")
 
-[node name="StandardGen" type="Node" parent="StateMachine"]
+[node name="Standard" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
 
-[node name="BurstGen" type="Node" parent="StateMachine"]
+[node name="Burst" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )
 
-[node name="SniperGen" type="Node" parent="StateMachine"]
+[node name="Sniper" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
 
-[node name="TunnelGen" type="Node" parent="StateMachine"]
+[node name="Tunnel" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
 
-[node name="StateTimer" type="Timer" parent="."]
-wait_time = 48.0
+[node name="State" type="Timer" parent="."]
+wait_time = 52.0
 one_shot = true
 autostart = true
-[connection signal="timeout" from="StateTimer" to="." method="_on_StateTimer_timeout"]
+
+[connection signal="timeout" from="State" to="." method="_on_State_timeout"]

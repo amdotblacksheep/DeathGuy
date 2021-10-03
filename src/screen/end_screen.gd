@@ -1,99 +1,83 @@
 extends Control
 
 
-signal second_chance()
-signal show_ads_warning(string)
+onready var score_text := $Score
+onready var wallet_text := $Wallet/Label
+onready var record_text := $Record
 
-
-onready var level := get_node("/root/Level")
-onready var admob := $AdMob
-onready var admob_debugger := $CanvasLayer/AdMobDebug
-onready var ads_warning := $AdsWarning
-onready var fake_ads := $FakeAds
-onready var adsbutton := $VBoxContainer/AdsButton
-onready var record := $Label
 onready var button_sfx := $ButtonSFX
+onready var tween := $Tween
 onready var anim_play := $AnimationPlayer
 
-var rewarded := false
-var is_fake_ads = true
+var score := 0 setget set_score
+var wallet := 0 setget set_wallet
+var record := 0 setget set_record
 
 
 func _ready() -> void:
-	fake_ads.connect("fake_ads_closed", self, "_on_Fake_Ads_closed")
-	connect("show_ads_warning", ads_warning, "_on_ShowWarning")
-	ads_warning.connect("can_show_ads", self, "_on_CanShow_Ads")
-	if (Engine.has_singleton("GodotAdMob")):
-		adsbutton.set_disabled(true)
-		admob.load_rewarded_video()
-		is_fake_ads = false
-#	else:
-#		admob_debugger.label.set_text("AdMob Java Singleton not found. This plugin will only work on Android")
+	record = UserData.score_record
+	record_text.set_text("Your record: %012d" % record)
 
-func _on_UpdateRecord(new_record : int) -> void:
-	record.set_text("Your record: %d" % new_record)
+func _on_end_screen_triggered() -> void:
+	anim_play.play("show")
+	yield(anim_play, "animation_finished")
+	
+	tween.interpolate_property(self, "score",
+		0, get_parent().get_parent().score, 1.0,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "wallet",
+		0, get_parent().get_parent().wallet, 0.5,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	yield(tween, "tween_all_completed")
+	
+	tween.interpolate_property(self, "wallet",
+	wallet, wallet + (score/100), 1.0, 
+	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	yield(tween, "tween_all_completed")
+	
+	if score > record:
+		tween.interpolate_property(self, "record",
+			record, score, 0.5,
+			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.start()
+	yield(tween, "tween_all_completed")
 
 func _on_RetryButton_pressed() -> void:
-	level.coin = level.score / 10
-	UserData.wallet += level.coin
 	SaveLoad.save_game()
 	button_sfx.play()
-	yield(button_sfx, "finished")
+	anim_play.play("exit")
+	yield(anim_play, "animation_finished")
 	get_tree().reload_current_scene()
 
-func _on_AdsButton_pressed() -> void:
-	button_sfx.play()
-	yield(button_sfx, "finished")
-	emit_signal("show_ads_warning", Main.ads_reward_string[1])
-
-func _on_CanShow_Ads() -> void:
-	BackGroundMusic.set_stream_paused(true)
-	if not is_fake_ads:
-		admob.show_rewarded_video()
-	else:
-		fake_ads.show_ads(15)
-
-func _on_ExitButton_pressed() -> void:
-	level.coin = level.score / 10
-	UserData.wallet += level.coin
-	SaveLoad.save_game()
-	button_sfx.play()
-	yield(button_sfx, "finished")
-	BackGroundMusic.stop()
-	get_tree().change_scene_to(Main.main_screen)
-
 func _on_CustomizeButton_pressed() -> void:
-	level.coin = level.score / 10
-	UserData.wallet += level.coin
 	SaveLoad.save_game()
 	button_sfx.play()
-	yield(button_sfx, "finished")
+	anim_play.play("exit")
+	yield(anim_play, "animation_finished")
 	BackGroundMusic.stop()
 	get_tree().change_scene_to(Main.customization_screen)
 
-func _on_Fake_Ads_closed() -> void:
-	rewarded = true
-	adsbutton.set_disabled(true)
-	emit_signal("second_chance")
-	BackGroundMusic.set_stream_paused(false)
+func _on_LeaderButton_pressed() -> void:
+	pass # Replace with function body.
 
-func _on_AdMob_rewarded_video_loaded() -> void:
-#	admob_debugger.label.set_text("Rewarded video ad loaded.")
-	adsbutton.set_disabled(false)
+func _on_ExitButton_pressed() -> void:
+	SaveLoad.save_game()
+	button_sfx.play()
+	anim_play.play("exit")
+	yield(anim_play, "animation_finished")
+	BackGroundMusic.stop()
+	get_tree().change_scene_to(Main.main_screen)
 
-func _on_AdMob_rewarded_video_failed_to_load(error_code : int) -> void:
-#	admob_debugger.label.set_text("Rewarded video ad failed to load with error : %d." % error_code)
-	adsbutton.set_disabled(false)
-	is_fake_ads = true
+func set_score(points : int) -> void:
+	score = points
+	score_text.set_text(str(score).pad_zeros(12))
 
-func _on_AdMob_rewarded(_currency : String, _ammount : int) -> void:
-#	admob_debugger.label.set_text("Rewarded video ad rewarded.")
-	rewarded = true
-	adsbutton.set_disabled(true)
-	emit_signal("second_chance")
+func set_wallet(coins : int) -> void:
+	wallet = coins
+	wallet_text.set_text(str(wallet))
 
-func _on_AdMob_rewarded_video_closed() -> void:
-	if not rewarded:
-#		admob_debugger.label.set_text("Rewarded video ad closed.")
-		admob.load_rewarded_video()
-	BackGroundMusic.set_stream_paused(false)
+func set_record(points : int) -> void:
+	record = points
+	record_text.set_text("Your record: %012d" % record)

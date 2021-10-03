@@ -2,5 +2,4 @@
 
 [node name="BackGroundMusic" type="AudioStreamPlayer"]
 pause_mode = 2
-volume_db = -12.0
 bus = "Music"

@@ -1,9 +1,9 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/deathguy_theme.tres" type="Theme" id=1]
 [ext_resource path="res://admob-lib/admob.gd" type="Script" id=2]
-[ext_resource path="res://assets/shader/material/invert.tres" type="Material" id=3]
-[ext_resource path="res://assets/shader/texture/erease_texture_up.png" type="Texture" id=4]
+[ext_resource path="res://assets/shader/material/glitch.tres" type="Material" id=3]
+[ext_resource path="res://src/deathguy_env.tres" type="Environment" id=4]
 [ext_resource path="res://debug/AdMobDebug.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/ui/coin.png" type="Texture" id=7]
@@ -15,143 +15,46 @@
 [ext_resource path="res://src/screen/InfoScreen.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/fakeads/FakeAds.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/screen/AdsWarning.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/shader/script/erease.shader" type="Shader" id=16]
-[ext_resource path="res://assets/shader/texture/erease_texture_left.png" type="Texture" id=17]
+[ext_resource path="res://src/screen/TutorialConfirmation.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/shader/texture/right_texture.png" type="Texture" id=17]
+[ext_resource path="res://assets/shader/script/change_texture.shader" type="Shader" id=19]
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
-shader = ExtResource( 16 )
+shader = ExtResource( 19 )
 shader_param/progress = 0.0
-shader_param/color = Color( 1.5, 1.5, 1.5, 1 )
 shader_param/noise = ExtResource( 17 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "ENTER"
+[sub_resource type="Animation" id=2]
+length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("BackGroundSelector:modulate")
+tracks/0/path = NodePath("Glitch:material:shader_param/apply")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Coin:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("ColorSelector:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("PlayerSelector/LeftButton:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("PlayerSelector/RightButton:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("PlayerSelector/Sprites/InfoButton:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("VBoxContainer:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("PlayerSelector/Sprites/Body:use_parent_material")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("PlayerSelector/Sprites:material:shader_param/progress")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.2, 0.0 ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("PlayerSelector/Sprites:material:shader_param/noise")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ true, false, true, false ]
 }
 
-[sub_resource type="Environment" id=2]
-background_mode = 4
-glow_enabled = true
-glow_blend_mode = 1
+[sub_resource type="Animation" id=3]
+resource_name = "exit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Glitch:material:shader_param/apply")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [node name="CustomizationScreen" type="Control"]
 anchor_right = 1.0
@@ -159,7 +62,9 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 8 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_horizontal_guides_": [ 640.0 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 360.0 ]
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -168,25 +73,16 @@ layer = 100
 [node name="AdMobDebug" parent="CanvasLayer" instance=ExtResource( 5 )]
 visible = false
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.188235, 0.188235, 0.188235, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="BackGroundSelector" parent="." instance=ExtResource( 12 )]
-modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 1 )
 
 [node name="Coin" type="HBoxContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -680.0
-margin_top = 64.0
-margin_right = -40.0
-margin_bottom = 128.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -320.0
+margin_top = 80.0
+margin_right = 320.0
+margin_bottom = 160.0
 grow_horizontal = 0
 rect_min_size = Vector2( 640, 64 )
 alignment = 2
@@ -194,124 +90,162 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Coin"]
-margin_left = 516.0
-margin_right = 580.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture = ExtResource( 7 )
-
-[node name="VSeparator" type="VSeparator" parent="Coin"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 584.0
-margin_right = 616.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 32, 64 )
-
 [node name="Label" type="Label" parent="Coin"]
-show_behind_parent = true
-material = ExtResource( 3 )
-margin_left = 620.0
-margin_top = 19.0
-margin_right = 640.0
-margin_bottom = 44.0
+margin_left = 499.0
+margin_top = 16.0
+margin_right = 520.0
+margin_bottom = 64.0
 grow_horizontal = 0
-rect_clip_content = true
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+grow_vertical = 0
 text = "0"
 align = 2
 valign = 1
 
-[node name="ColorSelector" parent="." instance=ExtResource( 10 )]
+[node name="VSeparator" type="VSeparator" parent="Coin"]
 modulate = Color( 1, 1, 1, 0 )
+margin_left = 524.0
+margin_right = 556.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 32, 64 )
+
+[node name="TextureRect" type="TextureRect" parent="Coin"]
+margin_left = 560.0
+margin_right = 640.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 7 )
+stretch_mode = 1
+
+[node name="ColorSelector" parent="." instance=ExtResource( 10 )]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -106.0
-margin_top = 200.0
-margin_right = 122.0
-margin_bottom = 312.0
+margin_left = -166.0
+margin_top = 160.0
+margin_right = 166.0
+margin_bottom = 324.0
 
 [node name="PlayerSelector" parent="." instance=ExtResource( 11 )]
 
-[node name="LeftButton" parent="PlayerSelector" index="0"]
-modulate = Color( 1, 1, 1, 0 )
+[node name="Button" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Sprites" parent="PlayerSelector" index="2"]
-material = SubResource( 3 )
-
-[node name="Body" parent="PlayerSelector/Sprites" index="0"]
-use_parent_material = true
-
-[node name="InfoButton" parent="PlayerSelector/Sprites" index="2"]
-modulate = Color( 1, 1, 1, 0 )
-
-[node name="RightButton" parent="PlayerSelector" index="4"]
-modulate = Color( 1, 1, 1, 0 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+[node name="PlayButton" type="Button" parent="Button"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -200.0
-margin_top = 80.0
 margin_right = 200.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 400, 248 )
+margin_bottom = 100.0
+rect_min_size = Vector2( 400, 100 )
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+enabled_focus_mode = 0
+text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
-margin_right = 400.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 400, 80 )
+[node name="AdsButton" type="Button" parent="Button"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = 102.0
+margin_right = 200.0
+margin_bottom = 202.0
+rect_min_size = Vector2( 400, 100 )
 focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 enabled_focus_mode = 0
-text = "Play!"
+text = "More Coin"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AdsButton" type="Button" parent="VBoxContainer"]
-margin_top = 84.0
-margin_right = 400.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 400, 80 )
+[node name="ExitButton" type="Button" parent="Button"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = 204.0
+margin_right = 200.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 400, 100 )
 focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 enabled_focus_mode = 0
-text = "More coin!"
+text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
-margin_top = 168.0
-margin_right = 400.0
-margin_bottom = 248.0
-rect_min_size = Vector2( 400, 80 )
+[node name="InfoButton" type="Button" parent="Button"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -312.0
+margin_top = -288.0
+margin_right = -152.0
+margin_bottom = -188.0
+rect_min_size = Vector2( 100, 100 )
 focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
-text = "Exit!"
+text = "..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="InfoScreen" parent="." instance=ExtResource( 13 )]
-visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -278.0
+margin_top = 320.0
+margin_right = 262.0
+margin_bottom = 960.0
 
 [node name="UnlockScreen" parent="." instance=ExtResource( 9 )]
-visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -278.0
+margin_top = 320.0
+margin_right = 262.0
+margin_bottom = 960.0
+
+[node name="TutorialConfirmation" parent="." instance=ExtResource( 16 )]
 
 [node name="AdsWarning" parent="." instance=ExtResource( 15 )]
-visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -278.0
+margin_top = 320.0
+margin_right = 262.0
+margin_bottom = 960.0
+
+[node name="Glitch" type="ColorRect" parent="."]
+material = ExtResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FakeAds" parent="." instance=ExtResource( 14 )]
 
@@ -326,21 +260,24 @@ max_ad_content_rate = "T"
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -16.0
 bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "ENTER"
-anims/ENTER = SubResource( 1 )
+anims/ENTER = SubResource( 2 )
+anims/exit = SubResource( 3 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/AdsButton" to="." method="_on_AdsButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
-[connection signal="rewarded" from="AdMob" to="." method="_on_AdMob_rewarded"]
-[connection signal="rewarded_video_closed" from="AdMob" to="." method="_on_AdMob_rewarded_video_closed"]
-[connection signal="rewarded_video_failed_to_load" from="AdMob" to="." method="_on_AdMob_rewarded_video_failed_to_load"]
-[connection signal="rewarded_video_loaded" from="AdMob" to="." method="_on_AdMob_rewarded_video_loaded"]
+environment = ExtResource( 4 )
 
-[editable path="PlayerSelector"]
+[connection signal="pressed" from="Button/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Button/AdsButton" to="." method="_on_AdsButton_pressed"]
+[connection signal="pressed" from="Button/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="Button/InfoButton" to="." method="_on_InfoButton_pressed"]
+[connection signal="popup_hide" from="InfoScreen" to="." method="_on_InfoScreen_popup_hide"]
+[connection signal="confirmed" from="TutorialConfirmation" to="." method="_on_TutorialConfirmation_confirmed"]
+[connection signal="confirmed" from="AdsWarning" to="." method="_on_AdsWarning_confirmed"]
+[connection signal="closed" from="FakeAds" to="." method="_on_FakeAds_closed"]
+[connection signal="interstitial_closed" from="AdMob" to="." method="_on_AdMob_interstitial_closed"]
+[connection signal="interstitial_failed_to_load" from="AdMob" to="." method="_on_AdMob_interstitial_failed_to_load"]
+[connection signal="interstitial_loaded" from="AdMob" to="." method="_on_AdMob_interstitial_loaded"]

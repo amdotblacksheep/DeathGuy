@@ -2,8 +2,11 @@ extends PlayerState
 
 
 func enter() -> void:
-	player.invincibility = true
+	player.is_despawning = false
+	player.is_respawning = true
 	player.linear_velocity = Vector2.ZERO
-	player.anim_play.play("fall+resp")
-	player.inv_timeout.start()
-	emit_signal("change_state", "fall")
+	player.resp_timeout.start()
+	player.anim_tree["parameters/playback"].travel("respawn")
+	player.respawn_sfx.play()
+	
+	state_machine.transition_to("Fall")

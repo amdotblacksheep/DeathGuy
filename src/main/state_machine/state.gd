@@ -2,17 +2,20 @@ extends Node
 class_name State
 
 
-signal change_state(state_path)
+var state_machine = null
 
 
-func _ready() -> void:
-	yield(owner, "ready")
-
-func unhandled_input(_event: InputEvent) -> void:
+func handle_input(_event: InputEvent) -> void:
 	pass
 
-func physics_process(_delta: float) -> void:
+func update(_delta: float) -> void:
+	pass
+
+func physics_update(_delta: float) -> void:
 	pass
 
 func enter() -> void:
+	pass
+
+func exit() -> void:
 	pass

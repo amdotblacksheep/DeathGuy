@@ -11,6 +11,13 @@ var unlocked_color : Array = [0]
 var unlocked_head : Array = [0]
 var unlocked_body : Array = [0]
 var unlocked_background : Array = [0]
+var tutorial : bool = true
+var bus : Dictionary = {
+	"master" : 9,
+	"sfx" : 9,
+	"music" : 9
+}
+var ads : bool = true
 
 
 func save() -> Dictionary:
@@ -25,6 +32,9 @@ func save() -> Dictionary:
 		"unlocked_color": unlocked_color,
 		"unlocked_head" : unlocked_head,
 		"unlocked_body" : unlocked_body,
-		"unlocked_background": unlocked_background 
+		"unlocked_background": unlocked_background,
+		"tutorial" : tutorial,
+		"bus" : bus,
+		"ads" : ads
 		}
 	return save_dict
