@@ -8,7 +8,7 @@
 </p>
 
 ## Free 2D game for Smartphone and Web
-git branch -d
+
 DeathGuy is a free and open source game developed by amdotblacksheep. So far two versions are available: an [Android app](https://play.google.com/store/apps/details?id=org.amdotblacksheep.deathguy) and a [browser game](https://amdotblacksheep.itch.io/deathguy).
 
 ## Software
